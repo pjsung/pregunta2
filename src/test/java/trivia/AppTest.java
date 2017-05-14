@@ -1,4 +1,4 @@
-package trivia;
+package pregunta2;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

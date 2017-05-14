@@ -41,8 +41,8 @@ pueden hacer las propias
 
 ### Creando nuestro proyecto
 ```bash
-    mvn archetype:generate -DgroupId=trivia \
-                           -DartifactId=trivia-app \
+    mvn archetype:generate -DgroupId=pregunta2 \
+                           -DartifactId=pregunta2-app \
                            -DarchetypeArtifactId=maven-archetype-quickstart \
                            -DinteractiveMode=false
 ```
@@ -72,7 +72,7 @@ $ mvn package
 Para correr el proyecto se puede invocar desde consola directamente al JAR generado
 
 ```
-  $ java -cp target/trivia-app-1.0-SNAPSHOT.jar trivia.App
+  $ java -cp target/pregunta2-app-1.0-SNAPSHOT.jar pregunta2.App
 ```
 
 Limpiar el proyecto antes de subir a GIT
@@ -192,12 +192,12 @@ Crear el archivo de configuración de la base de datos `{basedir}/src/resources/
 development.driver=com.mysql.jdbc.Driver
 development.username=<user>
 development.password=<passwd>
-development.url=jdbc:mysql://localhost/trivia
+development.url=jdbc:mysql://localhost/pregunta2
 
 development.test.driver=com.mysql.jdbc.Driver
 development.test.username=<user>
 development.test.password=<passwd>
-development.test.url=jdbc:mysql://localhost/trivia_test
+development.test.url=jdbc:mysql://localhost/pregunta2_test
 ```
 
 Algunos comandos del plugin db-migrator
@@ -247,7 +247,7 @@ En este punto nuestra base de Datos está creada y tiene la tabla Users
 Ahora para utilizar ActiveJDBC lo primero que podemos hacer es crear un modelo, para esto hay que crear una clase que extienda de `activejdbc.Model`
 
 ```
-package trivia;
+package pregunta2;
 
 import org.javalite.activejdbc.Model;
 
@@ -263,9 +263,9 @@ Para más información mirar la API de [activejdbc.Model](http://javalite.github
 Para probar que todo está funcionando podríamos crear un usuario de una forma muy rústica, a continuación un ejemplo
 
 ```
-package trivia;
+package pregunta2;
 import org.javalite.activejdbc.Base;
-import trivia.User;
+import pregunta2.User;
 
 /**
  * Hello Pregunta2
@@ -275,7 +275,7 @@ public class App
 {
     public static void main( String[] args )
     {
-      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/trivia", "<user>", "<pass>");
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pregunta2", "<user>", "<pass>");
 
       User u = new User();
       u.set("username", "Maradona");
@@ -311,9 +311,9 @@ Es un framework muy sencillo para escribir pruebas (tests desde ahora).
 Vamos a describir un modelo User en donde vamos a requerir la presencia de username para que el usuario sea valido en nuestro sistema
 
 ```
-package trivia;
+package pregunta2;
 
-import trivia.User;
+import pregunta2.User;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;
@@ -338,7 +338,7 @@ Bastante declarativo. Si corremos los tests en este punto vamos a ver que fallan
 Entonces tenemos que trabajar para que los tests pasen ahora. Si actualizamos el modelo `User` con el siguiente código
 
 ```
-package trivia;
+package pregunta2;
 
 import org.javalite.activejdbc.Model;
 

@@ -1,4 +1,4 @@
-package trivia;
+package pregunta2;
 
 import org.javalite.activejdbc.Base;
 
@@ -9,7 +9,7 @@ public
 class App {
     public static
     void main( String[] args ) {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/trivia", "celia", "celia");
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pregunta2", "celia", "celia");
 
         User u = new User();
         u.set("username", "Maradona");
