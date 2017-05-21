@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="pregunta2-app" />
         <module name="trivia-app" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="pregunta2-app" target="1.5" />
       <module name="trivia-app" target="1.5" />
     </bytecodeTargetLevel>
   </component>
