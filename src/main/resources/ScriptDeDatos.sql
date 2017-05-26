@@ -1,3 +1,5 @@
+DELETE * FROM pregunta2.Questions;
+DELETE * FROM pregunta2.Categories;
 INSERT INTO pregunta2.Categories (id, name, created, updated_at) VALUES (1, 'Arte', '2017-05-21 18:23:52', '2017-05-21 18:23:57');
 INSERT INTO pregunta2.Categories (id, name, created, updated_at) VALUES (2, 'Ciencia', '2017-05-21 18:26:01', '2017-05-21 18:26:03');
 INSERT INTO pregunta2.Categories (id, name, created, updated_at) VALUES (3, 'Deporte', '2017-05-21 18:26:04', '2017-05-21 18:26:06');
