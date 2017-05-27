@@ -8,5 +8,12 @@ import org.javalite.activejdbc.Model;
 public
 class Category
         extends Model {
+    private int    id;
+    private String name;
 
+    public
+    String getName( int id_Category ) {
+        Category c = Category.findFirst("id = ?", id_Category);
+        return (String) c.get("name");
+    }
 }

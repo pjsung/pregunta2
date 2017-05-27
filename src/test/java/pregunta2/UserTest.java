@@ -1,27 +1,22 @@
 package pregunta2;
 
-import org.javalite.activejdbc.Base;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 public
 class UserTest {
-    @After
-    public
-    void after() {
-        System.out.println("UserTest tearDown");
-        Base.rollbackTransaction();
-        Base.close();
-    }
+    //@After
+    //public
+    //void after() {
+    //    System.out.println("UserTest tearDown");
+    //    Base.rollbackTransaction();
+    //   Base.close();
+    //}
 
-    @Before
-    public
-    void before() {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pregunta2_test", "franco", "franco");
-        System.out.println("UserTest setup");
-        Base.openTransaction();
-    }
+    //@Before
+    //public
+    //void before() {
+    //    Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pregunta2_test", "franco", "franco");
+    //    System.out.println("UserTest setup");
+    //    Base.openTransaction();
+    //}
 
     // @Test
     // public void validateUniquenessOfUsernames(){
@@ -35,12 +30,12 @@ class UserTest {
     //     assertEquals(user2.isValid(), false);
     // }
 
-    @Test
-    public
-    void validateUniquenessOfUsernames() {
-        User user = new User();
-        user.set("username", "");
-
-        //assertEquals(user.isValid(), false);
-    }
+    //    @Test
+    //    public
+    //    void validateUniquenessOfUsernames() {
+    //        User user = new User();
+    //        user.set("username", "");
+    //
+    //        //assertEquals(user.isValid(), false);
+    //    }
 }

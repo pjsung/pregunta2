@@ -1,4 +1,4 @@
-CREATE TABLE pregunta2.Categories
+CREATE TABLE pregunta2.categories
 (
   id         INT PRIMARY KEY                      NOT NULL AUTO_INCREMENT,
   name       VARCHAR(25)                          NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE pregunta2.Categories
 )
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8;
-CREATE UNIQUE INDEX Categories_id_uindex
-  ON pregunta2.Categories (id);
-CREATE UNIQUE INDEX Categories_name_uindex
-  ON pregunta2.Categories (name);
+CREATE UNIQUE INDEX categories_id_uindex
+  ON pregunta2.categories (id);
+CREATE UNIQUE INDEX categories_name_uindex
+  ON pregunta2.categories (name);
