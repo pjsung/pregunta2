@@ -12,8 +12,41 @@ class Category
     private String name;
 
     public
-    String getName( int id_Category ) {
-        Category c = Category.findFirst("id = ?", id_Category);
-        return (String) c.get("name");
+    Category() {
+        this.id = 0;
+        this.name = null;
     }
+
+    public
+    Category( int id_Category ) {
+        Category c = Category.findFirst("id = ?", id_Category);
+        this.id = (Integer) c.get("id");
+        this.name = (String) c.get("name");
+    }
+
+    public
+    Category(
+            int id,
+            String name
+    ) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public
+    Object getId() {
+        return id;
+    }
+
+    public
+    String getName() {
+        return name;
+    }
+
+    public
+    void setName( String name ) {
+        this.name = name;
+    }
+
 }
