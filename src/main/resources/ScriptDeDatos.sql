@@ -48,7 +48,7 @@ INSERT INTO pregunta2.questions (question, option1, option2, option3, option4, a
    'Topología', 2, 2);
 INSERT INTO pregunta2.questions (question, option1, option2, option3, option4, answer, category_id) VALUES
   ('¿Cuántos hidrógenos tiene la molécula de metano?', '10', '4', '6',
-   '8', 4, 2);
+   '8', 2, 2);
 INSERT INTO pregunta2.questions (question, option1, option2, option3, option4, answer, category_id) VALUES
   ('¿Cómo se llama el movimiento que realiza la Tierra alrededor del Sol?', 'Traslación', 'Rotación', 'La Tierra no se mueve',
    'Órbita', 1, 2);

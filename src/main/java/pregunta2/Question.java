@@ -10,7 +10,7 @@ class Question
         extends Model {
     private int    answer;
     private int    category_id;
-    private int    id;
+    private Long   id;
     private String option1;
     private String option2;
     private String option3;
@@ -19,7 +19,7 @@ class Question
 
     public
     Question() {
-        this.id = 0;
+        this.id = 0L;
         this.question = null;
         this.option1 = null;
         this.option2 = null;
@@ -30,9 +30,9 @@ class Question
     }
 
     public
-    Question( int id_question ) {
+    Question( Long id_question ) {
         Question q = Question.findFirst("id = ?", id_question);
-        this.id = (Integer) q.get("id");
+        this.id = id_question;
         this.question = (String) q.get("question");
         this.option1 = (String) q.get("option1");
         this.option2 = (String) q.get("option2");
@@ -44,7 +44,7 @@ class Question
 
     public
     Question(
-            int id,
+            Long id,
             String question,
             String option1,
             String option2,
@@ -90,7 +90,7 @@ class Question
     }
 
     public
-    void setId( int id ) {
+    void setId( Long id ) {
         this.id = id;
     }
 
