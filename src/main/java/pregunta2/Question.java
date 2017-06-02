@@ -8,8 +8,8 @@ import org.javalite.activejdbc.Model;
 public
 class Question
         extends Model {
-    private int    answer;
-    private int    category_id;
+    private String answer;
+    private Long   category_id;
     private Long   id;
     private String option1;
     private String option2;
@@ -25,8 +25,8 @@ class Question
         this.option2 = null;
         this.option3 = null;
         this.option4 = null;
-        this.answer = 0;
-        this.category_id = 0;
+        this.answer = null;
+        this.category_id = 0L;
     }
 
     public
@@ -38,8 +38,9 @@ class Question
         this.option2 = (String) q.get("option2");
         this.option3 = (String) q.get("option3");
         this.option4 = (String) q.get("option4");
-        this.answer = (Integer) q.get("answer");
-        this.category_id = (Integer) q.get("category_id");
+        this.answer = (String) q.get("answer");
+        Integer cId = (Integer) q.get("category_id");
+        this.category_id = cId.longValue();
     }
 
     public
@@ -50,8 +51,8 @@ class Question
             String option2,
             String option3,
             String option4,
-            int answer,
-            int category_id
+            String answer,
+            Long category_id
     ) {
         this.id = id;
         this.question = question;
@@ -64,22 +65,22 @@ class Question
     }
 
     public
-    int getAnswer() {
+    String getAnswer() {
         return answer;
     }
 
     public
-    void setAnswer( int answer ) {
+    void setAnswer( String answer ) {
         this.answer = answer;
     }
 
     public
-    int getCategory_id() {
+    Long getCategory_id() {
         return category_id;
     }
 
     public
-    void setCategory_id( int category_id ) {
+    void setCategory_id( Long category_id ) {
         this.category_id = category_id;
     }
 

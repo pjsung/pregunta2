@@ -6,7 +6,7 @@ CREATE TABLE pregunta2.questions
   option2     VARCHAR(64)     NOT NULL,
   option3     VARCHAR(64)     NOT NULL,
   option4     VARCHAR(64)     NOT NULL,
-  answer      INT             NOT NULL,
+  answer      VARCHAR(64)     NOT NULL,
   category_id INT             NOT NULL #,
   #CONSTRAINT Questions_Categories_id_fk FOREIGN KEY (id) REFERENCES categories (id)
 )

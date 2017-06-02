@@ -16,7 +16,7 @@ class Game {
         List< Long > listIdQuestion = randomID(1L, Question.count(), 10L);
         System.out.println(listIdQuestion);
         Scanner sc              = new Scanner(System.in);
-        Integer userAnswer;
+        String  userAnswer      = null;
         Integer recordChallenge = 0;
         for ( int i = 0; i < 10; i++ ) {
             Question q = new Question(listIdQuestion.get(i));
@@ -31,7 +31,7 @@ class Game {
             System.out.print("Opción 4: ");
             System.out.println(q.getOption4());
             System.out.print("Ingrese su respuesta: ");
-            userAnswer = sc.nextInt();
+            userAnswer = sc.next();
             if ( userAnswer == q.getAnswer() ) {
                 System.out.println("¡Respuesta Correcta!");
                 recordChallenge++;
@@ -50,7 +50,7 @@ class Game {
         List< Long > listIdQuestion2 = randomID(1L, Question.count(), Question.count());
         System.out.println(listIdQuestion2);
         Scanner sc            = new Scanner(System.in);
-        Integer userAnswer;
+        String  userAnswer    = null;
         Integer recordClassic = 0;
         Boolean condNext      = true;
         for ( int i = 0; i < 60 && condNext; i++ ) {
@@ -69,7 +69,7 @@ class Game {
             System.out.print("Opción 4: ");
             System.out.println(q.getOption4());
             System.out.print("Ingrese su respuesta: ");
-            userAnswer = sc.nextInt();
+            userAnswer = sc.next();
             if ( userAnswer == q.getAnswer() ) {
                 System.out.println("¡Respuesta Correcta!");
                 recordClassic++;
