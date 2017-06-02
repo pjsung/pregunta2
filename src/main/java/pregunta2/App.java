@@ -65,18 +65,7 @@ class App {
         //        Classic();
         //
         //        get(("/hello"), (req, res) -> "Hello World");
-        //
-        //
-        //        Map map = new HashMap();
-        //        map.put("name", "Sam");
-        //        map.put("value", 1000);
-        //        map.put("taxed_value", 1000 - (1000 * 0.4));
-        //        map.put("in_ca", true);
-        //
-        //        get("/hello2", (req, res) -> {
-        //                    return new ModelAndView(map, "./views/test.mustache");
-        //                }, new MustacheTemplateEngine()
-        //        );
+
 
         List< Long > listIdQuestion = pregunta2.Game.randomID(1L, Question.count(), 1L);
         Question     q              = new Question(listIdQuestion.get(0));
