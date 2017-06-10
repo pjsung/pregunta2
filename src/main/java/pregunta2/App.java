@@ -7,10 +7,8 @@ import spark.template.mustache.MustacheTemplateEngine;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
-import static spark.Spark.get;
-import static spark.Spark.post;
+import static spark.Spark.*;
 
 /**
  * Main app
@@ -19,7 +17,13 @@ public
 class App {
     public static
     void main( String[] args ) {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pregunta2", "celia", "celia");
+        before(( req, res ) -> {
+            Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pregunta2", "celia", "celia");
+        });
+
+        after(( req, res ) -> {
+            Base.close();
+        });
 
         //User u = new User();
         //u.set("username", "Maradona");
@@ -67,17 +71,6 @@ class App {
         //        get(("/hello"), (req, res) -> "Hello World");
 
 
-        List< Long > listIdQuestion = pregunta2.Game.randomID(1L, Question.count(), 1L);
-        Question     q              = new Question(listIdQuestion.get(0));
-        Scanner      sc             = new Scanner(System.in);
-        Integer      userAnswer;
-        Map          map            = new HashMap();
-        map.put("pregunta", q.getQuestion());
-        map.put("preguntaId", q.getId());
-        map.put("opcion1", q.getOption1());
-        map.put("opcion2", q.getOption2());
-        map.put("opcion3", q.getOption3());
-        map.put("opcion4", q.getOption4());
         //        map.put("getAnswer", "");
         //        userAnswer = sc.nextInt();
         //        if ( userAnswer == q.getAnswer() ) {
@@ -87,21 +80,60 @@ class App {
         //            System.out.print("La respuesta correcta es: ");
         //            System.out.println(q.getAnswer());
         //        }
+        get("/", ( req, res ) -> {
+            Map map = new HashMap();
+            return new ModelAndView(map, "./views/bienvenido.mustache");
+        }, new MustacheTemplateEngine());
 
-        get("/hello2", ( req, res ) -> {
+        post("/user", ( req, res ) -> {
+            Map  map = new HashMap();
+            User u   = new User(req.queryParams("user"));
+            map.put("username", u.getNick());
+            map.put("userID", u.getId());
+            req.session(true);
+            req.session().attribute("u.getNick()", "u.getPass()");
+            if ( req.queryParams("password").equals(u.getPass()) ) {
+                return new ModelAndView(map, "./views/user.mustache");
+            } else {
+                return new ModelAndView(map, "./views/bienvenido.mustache");
+            }
+        }, new MustacheTemplateEngine());
+
+        post("/challenge", ( req, res ) -> {
+            req.session().attribute("user");
+            List< Long > listIdQuestion = pregunta2.Game.randomID(1L, Question.count(), 10L);
+            Map          map            = new HashMap();
+            return new ModelAndView(map, "./views/challenge9.mustache");
+        }, new MustacheTemplateEngine());
+
+        post("/challenge9", ( req, res ) -> {
+            req.session().attribute("user");
+            List< Long > listIdQuestion = pregunta2.Game.randomID(1L, Question.count(), 1L);
+            Question     q              = new Question(listIdQuestion.get(0));
+            Map          map            = new HashMap();
+            map.put("pregunta", q.getQuestion());
+            map.put("preguntaId", q.getId());
+            map.put("opcion1", q.getOption1());
+            map.put("opcion2", q.getOption2());
+            map.put("opcion3", q.getOption3());
+            map.put("opcion4", q.getOption4());
             return new ModelAndView(map, "./views/challenge.mustache");
         }, new MustacheTemplateEngine());
 
         post("/responder", ( req, res ) -> {
+            req.session().attribute("user");
+            Question q    = new Question(Long.parseLong(req.queryParams("preguntaID")));
+            Map      map2 = new HashMap();
+            map2.put("respuestaCorrecta", q.getAnswer());
             if ( req.queryParams("respuesta").equals(q.getAnswer()) ) {
-                return new ModelAndView(map, "./views/responderChallenge.mustache");
+                return new ModelAndView(map2, "./views/responderChallenge.mustache");
             } else {
-                return new ModelAndView(map, "./views/responderMalChallenge.mustache");
+                return new ModelAndView(map2, "./views/responderMalChallenge.mustache");
             }
 
         }, new MustacheTemplateEngine());
 
+        //        pregunta2.Game.Challenge();
 
-        Base.close();
     }
 }

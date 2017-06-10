@@ -1,0 +1,22 @@
+<h1>Pregunta2: Challenge.</h1>
+
+
+<p>Pregunta: {{pregunta}}</p>
+
+<ul>
+    <li>Opcion 1: {{opcion1}}</li>
+    <li>Opcion 2: {{opcion2}}</li>
+    <li>Opcion 3: {{opcion3}}</li>
+    <li>Opcion 4: {{opcion4}}</li>
+</ul>
+
+<form action="/responder" method="post">
+    <input type="hidden" name"preguntaID" value="{{preguntaID}}"></input>
+
+    <input type="text" name="respuesta">
+    <!--<input type="button" value="Responder">-->
+    <input type="submit" value="Responder">
+</form>
+
+
+<a href="/celia">Enlace</a>

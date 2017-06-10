@@ -1,0 +1,18 @@
+<h1>Bievenido {{username}}</h1>
+
+
+<p>Seleccione el modo del juego</p>
+
+
+<form action="/challenge" method="post">
+    <input type="hidden" name"userID" value="{{userID}}"></input>
+    <input type="submit" name="Challenge" value="Challenge">
+</form>
+
+<form action="/classic" method="post">
+    <input type="hidden" name"userID" value="{{userID}}"></input>
+    <input type="submit" name="Classic" value="Classic">
+</form>
+
+
+
