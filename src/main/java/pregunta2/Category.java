@@ -20,7 +20,7 @@ class Category
     public
     Category( Long id_Category ) {
         Category c = Category.findFirst("id = ?", id_Category);
-        this.id = (Long) c.get("id");
+        this.id = id_Category;
         this.name = (String) c.get("name");
     }
 
@@ -35,7 +35,7 @@ class Category
 
     @Override
     public
-    Object getId() {
+    Long getId() {
         return id;
     }
 

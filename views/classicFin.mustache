@@ -1,12 +1,14 @@
-<h1>Has finalizado el modo de juego Duelo</h1>
+<h1>Has finalizado el modo de juego Clásico</h1>
 
 Haz click para volver a la pantalla del juego.
 
 <br>userId: {{userId}}</br>
 <br>count: {{count}}</br>
+<br>conditionNext: {{conditionNext}}</br>
 
 <form action="/juego" method="post">
     <input type="hidden" name="userId" value="{{userId}}">
     <input type="hidden" name="count" value="{{count}}">
+    <input type="hidden" name="conditionNext" value="{{conditionNext}}">
     <input type="submit" value="Volver">
 </form>

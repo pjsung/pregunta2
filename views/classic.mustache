@@ -1,8 +1,10 @@
 <h1>Pregunta2: Challenge.</h1>
 
-userId: {{userId}}
-count: {{count}}
+<br>userId: {{userId}}</br>
+<br>count: {{count}}</br>
+<br>conditionNext: {{conditionNext}}</br>
 
+<p>Categoria {{categoryId}}: {{category}}</p>
 <p>Pregunta {{count}}: {{pregunta}}</p>
 
 <ul>
@@ -12,14 +14,12 @@ count: {{count}}
     <li>Opcion 4: {{opcion4}}</li>
 </ul>
 
-<form action="/responder" method="post">
+<form action="/responderClassic" method="post">
     <input type="hidden" name="userId" value="{{userId}}">
     <input type="hidden" name="count" value="{{count}}">
     <input type="hidden" name="preguntaId" value="{{preguntaId}}">
+    <input type="hidden" name="conditionNext" value="{{conditionNext}}">
 
     <input type="text" name="respuesta">
     <input type="submit" value="Responder">
 </form>
-
-
-<a href="/celia">Enlace</a>

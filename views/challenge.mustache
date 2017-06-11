@@ -1,15 +1,24 @@
-<h1>Challenge</h1>
+<h1>Pregunta2: Challenge.</h1>
 
-userId: {{userId}}
-count: {{count}}
+<br>userId: {{userId}}</br>
+<br>count: {{count}}</br>
 
-<p>¿Listo para comenzar?</p>
+<p>Pregunta {{count}}: {{pregunta}}</p>
 
+<ul>
+    <li>Opcion 1: {{opcion1}}</li>
+    <li>Opcion 2: {{opcion2}}</li>
+    <li>Opcion 3: {{opcion3}}</li>
+    <li>Opcion 4: {{opcion4}}</li>
+</ul>
 
-<form action="/challenge9" method="post">
+<form action="/responder" method="post">
     <input type="hidden" name="userId" value="{{userId}}">
     <input type="hidden" name="count" value="{{count}}">
-    <input type="submit" value="Comenzar">
+    <input type="hidden" name="preguntaId" value="{{preguntaId}}">
+
+    <input type="text" name="respuesta">
+    <input type="submit" value="Responder">
 </form>
 
 

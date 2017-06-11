@@ -1,12 +1,16 @@
-<h1>Respuesta Incorrecta</h1>
+<h1>Challenge</h1>
 
 <br>userId: {{userId}}</br>
 <br>count: {{count}}</br>
 
-<br>La respuesta correcta es: {{respuestaCorrecta}}</br>
+<p>¿Listo para comenzar?</p>
+
 
 <form action="/challenge" method="post">
     <input type="hidden" name="userId" value="{{userId}}">
     <input type="hidden" name="count" value="{{count}}">
-    <input type="submit" value="Continuar">
+    <input type="submit" value="Comenzar">
 </form>
+
+
+<a href="/celia">Enlace</a>
