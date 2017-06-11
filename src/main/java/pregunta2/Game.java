@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public
 class Game
         extends Model {
+
     private Integer count;
     private Long    id;
     private Long    question_id;
@@ -83,64 +84,6 @@ class Game
         return question_id;
     }
 
-    //    public static
-    //    void Challenge() {
-    //        List< Long > listIdQuestion = randomID(1L, Question.count(), 10L);
-    //        Question     q              = new Question(listIdQuestion.get(0));
-    //        Scanner      sc             = new Scanner(System.in);
-    //        Integer      userAnswer;
-    //        Map          map            = new HashMap();
-    //        map.put("pregunta", q.getQuestion());
-    //        map.put("preguntaId", q.getId());
-    //        map.put("opcion1", q.getOption1());
-    //        map.put("opcion2", q.getOption2());
-    //        map.put("opcion3", q.getOption3());
-    //        map.put("opcion4", q.getOption4());
-    //        for ( int i = 0; i < 9; i++ ) {
-    //            get("/gameChagenlle", ( req, res ) -> {
-    //                return new ModelAndView(map, "./views/challenge.mustache");
-    //            }, new MustacheTemplateEngine());
-    //
-    //            post("/responder", ( req, res ) -> {
-    //                if ( req.queryParams("respuesta").equals(q.getAnswer()) ) {
-    //                    return new ModelAndView(map, "./views/responderChallenge.mustache");
-    //                } else {
-    //                    return new ModelAndView(map, "./views/responderMalChallenge.mustache");
-    //                }
-    //
-    //            }, new MustacheTemplateEngine());
-    //        }
-    //        List< Long > listIdQuestion = randomID(1L, Question.count(), 10L);
-    //        System.out.println(listIdQuestion);
-    //        Scanner sc              = new Scanner(System.in);
-    //        String  userAnswer      = null;
-    //        Integer recordChallenge = 0;
-    //        for ( int i = 0; i < 10; i++ ) {
-    //            Question q = new Question(listIdQuestion.get(i));
-    //            System.out.print("Pregunta: ");
-    //            System.out.println(q.getQuestion());
-    //            System.out.print("Opción 1: ");
-    //            System.out.println(q.getOption1());
-    //            System.out.print("Opción 2: ");
-    //            System.out.println(q.getOption2());
-    //            System.out.print("Opción 3: ");
-    //            System.out.println(q.getOption3());
-    //            System.out.print("Opción 4: ");
-    //            System.out.println(q.getOption4());
-    //            System.out.print("Ingrese su respuesta: ");
-    //            userAnswer = sc.next();
-    //            if ( userAnswer == q.getAnswer() ) {
-    //                System.out.println("¡Respuesta Correcta!");
-    //                recordChallenge++;
-    //            } else {
-    //                System.out.println("Respuesta Incorrecta.");
-    //                System.out.print("La respuesta correcta es: ");
-    //                System.out.println(q.getAnswer());
-    //            }
-    //
-    //        }
-    //        System.out.println("Contestaste bien: " + recordChallenge + " preguntas.");
-    //    }
 
     //    public static
     //    void Classic() {

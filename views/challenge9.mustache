@@ -1,5 +1,6 @@
 <h1>Pregunta2: Challenge.</h1>
 
+userId: {{userId}}
 
 <p>Pregunta: {{pregunta}}</p>
 
@@ -11,7 +12,8 @@
 </ul>
 
 <form action="/responder" method="post">
-    <input type="hidden" name"preguntaID" value="{{preguntaID}}"></input>
+    <input type="hidden" name="userID" value="{{userId}}">
+    <input type="hidden" name="preguntaId" value="{{preguntaId}}">
 
     <input type="text" name="respuesta">
     <!--<input type="button" value="Responder">-->

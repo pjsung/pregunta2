@@ -89,7 +89,7 @@ class App {
             Map  map = new HashMap();
             User u   = new User(req.queryParams("user"));
             map.put("username", u.getNick());
-            map.put("userID", u.getId());
+            map.put("userId", u.getId());
             req.session(true);
             req.session().attribute("u.getNick()", "u.getPass()");
             if ( req.queryParams("password").equals(u.getPass()) ) {
@@ -102,8 +102,13 @@ class App {
         post("/challenge", ( req, res ) -> {
             req.session().attribute("user");
             List< Long > listIdQuestion = pregunta2.Game.randomID(1L, Question.count(), 10L);
-            Map          map            = new HashMap();
-            return new ModelAndView(map, "./views/challenge9.mustache");
+            for ( Long i = 0L; i < 2L; i++ ) {
+                Game g = new Game(i + 1L, listIdQuestion.get(i.intValue()), 0);
+                g.saveIt();
+            }
+            Map map = new HashMap();
+            map.put("userId", req.queryParams("userId"));
+            return new ModelAndView(map, "./views/challenge.mustache");
         }, new MustacheTemplateEngine());
 
         post("/challenge9", ( req, res ) -> {
@@ -111,29 +116,31 @@ class App {
             List< Long > listIdQuestion = pregunta2.Game.randomID(1L, Question.count(), 1L);
             Question     q              = new Question(listIdQuestion.get(0));
             Map          map            = new HashMap();
+            map.put("userId", req.queryParams("userId"));
             map.put("pregunta", q.getQuestion());
             map.put("preguntaId", q.getId());
             map.put("opcion1", q.getOption1());
             map.put("opcion2", q.getOption2());
             map.put("opcion3", q.getOption3());
             map.put("opcion4", q.getOption4());
-            return new ModelAndView(map, "./views/challenge.mustache");
+            return new ModelAndView(map, "./views/challenge9.mustache");
         }, new MustacheTemplateEngine());
 
         post("/responder", ( req, res ) -> {
             req.session().attribute("user");
-            Question q    = new Question(Long.parseLong(req.queryParams("preguntaID")));
-            Map      map2 = new HashMap();
-            map2.put("respuestaCorrecta", q.getAnswer());
+            System.out.println("--------!!!!!!!------------" + req.queryParams("userId"));
+            System.out.println("--------!!!!!!!------------" + req.queryParams("preguntaId"));
+            Question q   = new Question(Long.parseLong(req.queryParams("preguntaId")));
+            Map      map = new HashMap();
+            map.put("userId", req.queryParams("userId"));
+            map.put("respuestaCorrecta", q.getAnswer());
             if ( req.queryParams("respuesta").equals(q.getAnswer()) ) {
-                return new ModelAndView(map2, "./views/responderChallenge.mustache");
+                return new ModelAndView(map, "./views/responderChallenge.mustache");
             } else {
-                return new ModelAndView(map2, "./views/responderMalChallenge.mustache");
+                return new ModelAndView(map, "./views/responderMalChallenge.mustache");
             }
 
         }, new MustacheTemplateEngine());
-
-        //        pregunta2.Game.Challenge();
 
     }
 }

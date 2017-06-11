@@ -1,5 +1,8 @@
 <h1>¡Respuesta Correcta!</h1>
 
-<form action="/hello2" method="get">
-    <input type="button" value="Continuar">
+userId: {{userId}}
+
+<form action="/challenge9" method="post">
+    <input type="hidden" name="userId" value="{{userId}}">
+    <input type="submit" value="Continuar">
 </form>
