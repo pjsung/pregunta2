@@ -1,8 +1,10 @@
 <h1>¡Respuesta Correcta!</h1>
 
 userId: {{userId}}
+count: {{count}}
 
 <form action="/challenge9" method="post">
     <input type="hidden" name="userId" value="{{userId}}">
+    <input type="hidden" name="count" value="{{count}}">
     <input type="submit" value="Continuar">
 </form>

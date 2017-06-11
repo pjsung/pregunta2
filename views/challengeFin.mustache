@@ -1,0 +1,12 @@
+<h1>Has finalizado el modo de juego Duelo</h1>
+
+Haz click para volver a la pantalla del juego.
+
+userId: {{userId}}
+count: {{count}}
+
+<form action="/juego" method="post">
+    <input type="hidden" name="userId" value="{{userId}}">
+    <input type="hidden" name="count" value="{{count}}">
+    <input type="submit" value="Volver">
+</form>

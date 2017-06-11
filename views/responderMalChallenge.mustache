@@ -1,10 +1,12 @@
 <h1>Respuesta Incorrecta</h1>
 
 userId: {{userId}}
+count: {{count}}
 
 <br>La respuesta correcta es: {{respuestaCorrecta}}</br>
 
 <form action="/challenge9" method="post">
     <input type="hidden" name="userId" value="{{userId}}">
+    <input type="hidden" name="count" value="{{count}}">
     <input type="submit" value="Continuar">
 </form>

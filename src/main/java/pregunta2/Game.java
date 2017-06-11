@@ -20,18 +20,15 @@ class Game
     public
     Game( Long id ) {
         question_id = 0L;
-        count = 0;
     }
 
     public
     Game(
             Long id,
-            Long question_id,
-            Integer count
+            Long question_id
     ) {
         this.id = id;
         this.question_id = question_id;
-        this.count = count;
     }
 
     /**
@@ -56,16 +53,6 @@ class Game
                 limit(maxResultSize). //Limits the unlimited stream to the maxResultSize we care about
                 boxed(). //Convert int to Integer
                 collect(Collectors.toList()); //Turn the stream into a java.utilList for returning
-    }
-
-    public
-    Integer getCount() {
-        return count;
-    }
-
-    public
-    void setCount( Integer count ) {
-        this.count = count;
     }
 
     @Override

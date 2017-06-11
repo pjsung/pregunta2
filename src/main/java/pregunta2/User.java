@@ -5,6 +5,7 @@ import org.javalite.activejdbc.Model;
 public
 class User
         extends Model {
+    private int    count;
     private int    id;
     private String nick;
     private String pass;
@@ -18,6 +19,7 @@ class User
         this.pass = null;
         this.recordClassic = 0;
         this.recordChanllenge = 0;
+        this.count = 0;
     }
 
     public
@@ -28,6 +30,7 @@ class User
         this.pass = (String) u.get("pass");
         this.recordClassic = (Integer) u.get("recordClassic");
         this.recordChanllenge = (Integer) u.get("recordChallenge");
+        this.count = (Integer) u.get("count");
     }
 
     public
@@ -41,6 +44,17 @@ class User
         this.pass = pass;
         this.recordClassic = 0;
         this.recordChanllenge = 0;
+        this.count = 0;
+    }
+
+    public
+    int getCount() {
+        return count;
+    }
+
+    public
+    void setCount( int count ) {
+        this.count = count;
     }
 
     @Override

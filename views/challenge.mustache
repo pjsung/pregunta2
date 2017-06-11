@@ -1,12 +1,14 @@
 <h1>Challenge</h1>
 
 userId: {{userId}}
+count: {{count}}
 
 <p>¿Listo para comenzar?</p>
 
 
 <form action="/challenge9" method="post">
     <input type="hidden" name="userId" value="{{userId}}">
+    <input type="hidden" name="count" value="{{count}}">
     <input type="submit" value="Comenzar">
 </form>
 
