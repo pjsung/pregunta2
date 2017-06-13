@@ -13,17 +13,12 @@ class User
 
     public
     void setCount( Integer count ) {
-        this.set(count);
+        this.set("count", count);
     }
 
     public
     Integer getId() {
         return (Integer) this.get("id");
-    }
-
-    public
-    void setId( Integer id ) {
-        this.setId(id);
     }
 
     public
@@ -33,7 +28,7 @@ class User
 
     public
     void setNick( String nick ) {
-        this.set(nick);
+        this.set("nick", nick);
     }
 
     public
@@ -43,7 +38,7 @@ class User
 
     public
     void setPass( String pass ) {
-        this.set(pass);
+        this.set("pass", pass);
     }
 
     public
@@ -53,7 +48,7 @@ class User
 
     public
     void setRecordChallenge( Integer recordChallenge ) {
-        this.set(recordChallenge);
+        this.set("recordChallenge", recordChallenge);
     }
 
     public
@@ -63,7 +58,7 @@ class User
 
     public
     void setRecordClassic( Integer recordClassic ) {
-        this.set(recordClassic);
+        this.set("recordClassic", recordClassic);
     }
     //    static {
     //        validatePresenceOf("username").message("Please, provide your username");

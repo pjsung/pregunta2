@@ -16,7 +16,7 @@ class Question
 
     public
     void setAnswer( String answer ) {
-        this.set(answer);
+        this.set("answer", answer);
     }
 
     public
@@ -26,7 +26,7 @@ class Question
 
     public
     void setCategory_id( Integer category_id ) {
-        this.set(category_id);
+        this.set("category_id", category_id);
     }
 
     @Override
@@ -36,18 +36,13 @@ class Question
     }
 
     public
-    void setId( Integer id ) {
-        this.set(id);
-    }
-
-    public
     String getOption1() {
         return (String) this.get("option1");
     }
 
     public
     void setOption1( String option1 ) {
-        this.set(option1);
+        this.set("option1", option1);
     }
 
     public
@@ -57,7 +52,7 @@ class Question
 
     public
     void setOption2( String option2 ) {
-        this.set(option2);
+        this.set("option2", option2);
     }
 
     public
@@ -67,7 +62,7 @@ class Question
 
     public
     void setOption3( String option3 ) {
-        this.set(option3);
+        this.set("option3", option3);
     }
 
     public
@@ -77,7 +72,7 @@ class Question
 
     public
     void setOption4( String option4 ) {
-        this.set(option4);
+        this.set("option4", option4);
     }
 
     public
@@ -87,7 +82,7 @@ class Question
 
     public
     void setQuestion( String question ) {
-        this.set(question);
+        this.set("question", question);
     }
 
 }

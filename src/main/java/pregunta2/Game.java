@@ -44,18 +44,13 @@ class Game
     }
 
     public
-    void setId( Integer id ) {
-        this.set(id);
-    }
-
-    public
     Integer getQuestion_id() {
         return (Integer) this.get("question_id");
     }
 
     public
     void setQuestion_id( Integer question_id ) {
-        this.set(question_id);
+        this.set("question_id", question_id);
     }
 
 }

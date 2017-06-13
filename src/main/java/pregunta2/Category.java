@@ -16,18 +16,13 @@ class Category
     }
 
     public
-    void setId( Integer id ) {
-        this.setId(id);
-    }
-
-    public
     String getName() {
         return (String) this.get("name");
     }
 
     public
     void setName( String name ) {
-        this.set("name");
+        this.set("name", name);
     }
 
 }
