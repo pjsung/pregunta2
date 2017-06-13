@@ -43,21 +43,29 @@ class App {
             u.set("recordClassic", 0);
             u.set("recordChallenge", 0);
             u.set("count", 0);
+            u.set("userType", "common");
             u.saveIt();
             Map map = new HashMap();
             return new ModelAndView(map, "./views/registrarFin.mustache");
         }, new MustacheTemplateEngine());
 
+        get("/logout", ( req, res ) -> {
+            req.session().removeAttribute("user_id");
+            Map map = new HashMap();
+            return new ModelAndView(map, "./views/logout.mustache");
+        }, new MustacheTemplateEngine());
+
         post("/user", ( req, res ) -> {
             Map  map = new HashMap();
             User u   = User.findFirst("nick = ?", req.queryParams("user"));
-            map.put("user", u.getNick());
-            map.put("userId", u.getId());
-            if ( req.queryParams("password").equals(u.getPass()) ) {
+            if ( u != null && req.queryParams("password").equals(u.getPass()) ) {
+                map.put("user", u.getNick());
+                map.put("userId", u.getId());
                 req.session(true);
                 req.session().attribute("user_id", "u.getId()");
                 return new ModelAndView(map, "./views/user.mustache");
             } else {
+                map.put("state", "Incorrect user or pass, try again");
                 return new ModelAndView(map, "./views/bienvenido.mustache");
             }
         }, new MustacheTemplateEngine());
@@ -79,8 +87,8 @@ class App {
                 g.set("question_id", listIdQuestion.get(i));
                 g.save();
             }
-            Game     g   = Game.first("question_id > 0");
-            Map      map = new HashMap();
+            Game g   = Game.first("question_id > 0");
+            Map  map = new HashMap();
             map.put("userId", req.queryParams("userId"));
             map.put("count", 0);
             map.put("recordC", 0);

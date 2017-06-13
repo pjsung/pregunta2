@@ -187,6 +187,6 @@ INSERT INTO pregunta2.questions (question, option1, option2, option3, option4, a
 #Bibliografía: http://www.respuestaspreguntados.org/
 
 
-INSERT INTO pregunta2.users (nick, pass, recordClassic, recordChallenge) VALUES ('celia', 'celia', 0, 0);
-INSERT INTO pregunta2.users (nick, pass, recordClassic, recordChallenge) VALUES ('franco', 'franco', 0, 0);
-INSERT INTO pregunta2.users (nick, pass, recordClassic, recordChallenge) VALUES ('marcelo', 'marcelo', 0, 0);
+INSERT INTO pregunta2.users (nick, pass, recordClassic, recordChallenge, userType) VALUES ('celia', 'celia', 0, 0, 'admin');
+INSERT INTO pregunta2.users (nick, pass, recordClassic, recordChallenge, userType) VALUES ('franco', 'franco', 0, 0, 'common');
+INSERT INTO pregunta2.users (nick, pass, recordClassic, recordChallenge, userType) VALUES ('marcelo', 'marcelo', 0, 0, 'common');
