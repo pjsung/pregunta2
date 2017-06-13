@@ -5,109 +5,66 @@ import org.javalite.activejdbc.Model;
 public
 class User
         extends Model {
-    private int    count;
-    private int    id;
-    private String nick;
-    private String pass;
-    private int    recordChanllenge;
-    private int    recordClassic;
 
     public
-    User() {
-        this.id = 0;
-        this.nick = null;
-        this.pass = null;
-        this.recordClassic = 0;
-        this.recordChanllenge = 0;
-        this.count = 0;
+    Integer getCount() {
+        return (Integer) this.get("count");
     }
 
     public
-    User( String nick_user ) {
-        User u = User.findFirst("nick = ?", nick_user);
-        this.id = (Integer) u.get("id");
-        this.nick = (String) u.get("nick");
-        this.pass = (String) u.get("pass");
-        this.recordClassic = (Integer) u.get("recordClassic");
-        this.recordChanllenge = (Integer) u.get("recordChallenge");
-        this.count = (Integer) u.get("count");
+    void setCount( Integer count ) {
+        this.set(count);
     }
 
     public
-    User(
-            int id,
-            String nick,
-            String pass
-    ) {
-        this.id = id;
-        this.nick = nick;
-        this.pass = pass;
-        this.recordClassic = 0;
-        this.recordChanllenge = 0;
-        this.count = 0;
+    Integer getId() {
+        return (Integer) this.get("id");
     }
 
     public
-    int getCount() {
-        return count;
-    }
-
-    public
-    void setCount( int count ) {
-        this.count = count;
-    }
-
-    @Override
-    public
-    Object getId() {
-        return id;
-    }
-
-    public
-    void setId( int id ) {
-        this.id = id;
+    void setId( Integer id ) {
+        this.setId(id);
     }
 
     public
     String getNick() {
-        return nick;
+        return (String) this.get("nick");
     }
 
     public
     void setNick( String nick ) {
-        this.nick = nick;
+        this.set(nick);
     }
 
     public
     String getPass() {
-        return pass;
+        return (String) this.get("pass");
     }
 
     public
     void setPass( String pass ) {
-        this.pass = pass;
+        this.set(pass);
     }
 
     public
-    int getRecordChanllenge() {
-        return recordChanllenge;
+    Integer getRecordChallenge() {
+        return (Integer) this.get("recordChallenge");
     }
 
     public
-    void setRecordChanllenge( int recordChanllenge ) {
-        this.recordChanllenge = recordChanllenge;
+    void setRecordChallenge( Integer recordChallenge ) {
+        this.set(recordChallenge);
     }
 
     public
-    int getRecordClassic() {
-        return recordClassic;
+    Integer getRecordClassic() {
+        return (Integer) this.get("recordClassic");
     }
 
     public
-    void setRecordClassic( int recordClassic ) {
-        this.recordClassic = recordClassic;
+    void setRecordClassic( Integer recordClassic ) {
+        this.set(recordClassic);
     }
-
     //    static {
     //        validatePresenceOf("username").message("Please, provide your username");
     //    }
