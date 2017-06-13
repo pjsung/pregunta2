@@ -1,14 +1,16 @@
 <h1>Has finalizado el modo de juego Clásico</h1>
 
-Haz click para volver a la pantalla del juego.
+Haz click en botón Volver para volver a la pantalla del juego.
 
 <br>userId: {{userId}}</br>
 <br>count: {{count}}</br>
 <br>conditionNext: {{conditionNext}}</br>
+<br>recordC: {{recordC}}</br>
 
 <form action="/juego" method="post">
     <input type="hidden" name="userId" value="{{userId}}">
     <input type="hidden" name="count" value="{{count}}">
     <input type="hidden" name="conditionNext" value="{{conditionNext}}">
+    <input type="hidden" name="recordC" value="{{recordC}}">
     <input type="submit" value="Volver">
 </form>
