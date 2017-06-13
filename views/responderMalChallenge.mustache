@@ -2,11 +2,15 @@
 
 <br>userId: {{userId}}</br>
 <br>count: {{count}}</br>
+<br>game_id_actual: {{game_id_actual}}</br>
+<br>recordC: {{recordC}}</br>
 
 <br>La respuesta correcta es: {{respuestaCorrecta}}</br>
 
 <form action="/challenge" method="post">
     <input type="hidden" name="userId" value="{{userId}}">
     <input type="hidden" name="count" value="{{count}}">
+    <input type="hidden" name="game_id_actual" value="{{game_id_actual}}">
+    <input type="hidden" name="recordC" value="{{recordC}}">
     <input type="submit" value="Continuar">
 </form>
