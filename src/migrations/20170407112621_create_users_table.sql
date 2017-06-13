@@ -5,7 +5,7 @@ CREATE TABLE pregunta2.users
   pass            VARCHAR(80)     NOT NULL,
   recordClassic   INT DEFAULT 0   NOT NULL,
   recordChallenge INT DEFAULT 0   NOT NULL,
-  count           INT DEFAULT 0   NOT NULL
+  userType        VARCHAR(10)
 )
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8;

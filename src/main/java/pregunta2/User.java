@@ -7,16 +7,6 @@ class User
         extends Model {
 
     public
-    Integer getCount() {
-        return (Integer) this.get("count");
-    }
-
-    public
-    void setCount( Integer count ) {
-        this.set("count", count);
-    }
-
-    public
     Integer getId() {
         return (Integer) this.get("id");
     }
@@ -60,6 +50,13 @@ class User
     void setRecordClassic( Integer recordClassic ) {
         this.set("recordClassic", recordClassic);
     }
+
+    public
+    String getUserType() { return (String) this.get("userType");}
+
+    public
+    void setUserType( String userType ) {this.set("userType", userType);}
+
     //    static {
     //        validatePresenceOf("username").message("Please, provide your username");
     //    }
