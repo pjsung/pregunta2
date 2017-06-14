@@ -1,10 +1,17 @@
 package pregunta2;
 
 import org.javalite.activejdbc.Model;
+import org.javalite.activejdbc.validation.UniquenessValidator;
 
 public
 class User
         extends Model {
+
+    static {
+        validatePresenceOf("nick").message("Please, provide your username");
+        validatePresenceOf("pass").message("Please, provide your password");
+        validateWith(new UniquenessValidator("nick")).message("This username is already exists.");
+    }
 
     public
     Integer getId() {
@@ -57,8 +64,5 @@ class User
     public
     void setUserType( String userType ) {this.set("userType", userType);}
 
-    //    static {
-    //        validatePresenceOf("username").message("Please, provide your username");
-    //    }
 
 }

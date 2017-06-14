@@ -1,6 +1,7 @@
 package pregunta2;
 
 import org.javalite.activejdbc.Model;
+import org.javalite.activejdbc.validation.UniquenessValidator;
 
 import java.util.List;
 import java.util.Random;
@@ -12,6 +13,11 @@ import java.util.stream.Collectors;
 public
 class Game
         extends Model {
+
+    static {
+        validatePresenceOf("question_id").message("Please, provide question_id");
+        validateWith(new UniquenessValidator("question_id")).message("This question_id is already exists.");
+    }
 
     /**
      * @param minID:         ID mas chico
@@ -52,5 +58,4 @@ class Game
     void setQuestion_id( Integer question_id ) {
         this.set("question_id", question_id);
     }
-
 }

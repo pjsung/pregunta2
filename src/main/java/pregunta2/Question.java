@@ -1,6 +1,7 @@
 package pregunta2;
 
 import org.javalite.activejdbc.Model;
+import org.javalite.activejdbc.validation.UniquenessValidator;
 
 /**
  * Created by celia on 26/05/17.
@@ -8,6 +9,11 @@ import org.javalite.activejdbc.Model;
 public
 class Question
         extends Model {
+
+    static {
+        validatePresenceOf("question").message("Please, provide question");
+        validateWith(new UniquenessValidator("question")).message("This question is already exists.");
+    }
 
     public
     String getAnswer() {
@@ -84,5 +90,4 @@ class Question
     void setQuestion( String question ) {
         this.set("question", question);
     }
-
 }

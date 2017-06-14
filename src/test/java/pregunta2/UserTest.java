@@ -5,7 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public
 class UserTest {
@@ -20,7 +20,7 @@ class UserTest {
     @Before
     public
     void before() {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pregunta2_test", "franco", "franco");
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pregunta2", "celia", "celia");
         System.out.println("UserTest setup");
         Base.openTransaction();
     }
@@ -31,7 +31,7 @@ class UserTest {
         User user = new User();
         user.set("pass", "");
 
-        assertEquals(user.isValid(), false);
+        assertEquals(false, user.isValid());
     }
 
     @Test
@@ -39,20 +39,25 @@ class UserTest {
     void validateNotNullOfUsernames() {
         User user = new User();
         user.set("nick", "");
+        user.save();
 
-        assertEquals(user.isValid(), false);
+        assertEquals(false, user.isValid());
     }
 
+    //
     @Test
     public
     void validateUniquenessOfUsernames() {
         User user = new User();
         user.set("nick", "anakin");
+        user.set("pass", "anakin");
         user.saveIt();
 
         User user2 = new User();
         user.set("nick", "anakin");
+        user.set("pass", "anakin");
+        user2.save();
 
-        assertEquals(user2.isValid(), false);
+        assertEquals(false, user2.isValid());
     }
 }
