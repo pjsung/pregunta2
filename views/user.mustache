@@ -1,9 +1,11 @@
 <h1>Bievenido {{user}}</h1>
 
-<br>userId: {{userId}}</br>
+<br>Tu record actual es: </br>
+<br>Record Challenge: {{recordChallenge}}</br>
+<br>Record Classic: {{recordClassic}}</br>
+<br> </br>
 
 <form action="/juego" method="post">
-    <input type="hidden" name="userId" value="{{userId}}">
     <input type="submit" value="Jugar">
 </form>
 

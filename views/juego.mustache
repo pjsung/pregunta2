@@ -1,11 +1,13 @@
 <p>Seleccione el modo del juego</p>
 
 <form action="/challengeWelcome" method="post">
-    <input type="hidden" name="userId" value="{{userId}}">
     <input type="submit" name="Challenge" value="Challenge">
 </form>
 
 <form action="/classicWelcome" method="post">
-    <input type="hidden" name="userId" value="{{userId}}">
     <input type="submit" name="Classic" value="Classic">
+</form>
+
+<form action="/user" method="get">
+    <br><input type="submit" value="Volver"></br>
 </form>

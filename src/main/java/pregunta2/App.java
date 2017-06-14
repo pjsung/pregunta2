@@ -42,7 +42,6 @@ class App {
             u.set("pass", req.queryParams("password"));
             u.set("recordClassic", 0);
             u.set("recordChallenge", 0);
-            u.set("count", 0);
             u.set("userType", "common");
             u.saveIt();
             Map map = new HashMap();
@@ -60,9 +59,10 @@ class App {
             User u   = User.findFirst("nick = ?", req.queryParams("user"));
             if ( u != null && req.queryParams("password").equals(u.getPass()) ) {
                 map.put("user", u.getNick());
-                map.put("userId", u.getId());
+                map.put("recordChallenge", u.getRecordChallenge());
+                map.put("recordClassic", u.getRecordClassic());
                 req.session(true);
-                req.session().attribute("user_id", "u.getId()");
+                req.session().attribute("user_id", u.getId());
                 return new ModelAndView(map, "./views/user.mustache");
             } else {
                 map.put("state", "Incorrect user or pass, try again");
@@ -70,16 +70,22 @@ class App {
             }
         }, new MustacheTemplateEngine());
 
+        get("/user", ( req, res ) -> {
+            Map  map = new HashMap();
+            User u   = User.findById(req.session().attribute("user_id"));
+            map.put("recordChallenge", u.getRecordChallenge());
+            map.put("recordClassic", u.getRecordClassic());
+            return new ModelAndView(map, "./views/user.mustache");
+        }, new MustacheTemplateEngine());
+
         post("/juego", ( req, res ) -> {
-            req.session().attribute("user_id");
-            System.out.println("-----Session id: " + req.session().id());
+            System.out.println("-----User id: " + req.session().attribute("user_id"));
             Map map = new HashMap();
-            map.put("userId", req.queryParams("userId"));
             return new ModelAndView(map, "./views/juego.mustache");
         }, new MustacheTemplateEngine());
 
         post("/challengeWelcome", ( req, res ) -> {
-            req.session().attribute("user_id");
+            System.out.println("-----User id: " + req.session().attribute("user_id"));
             Game.deleteAll();
             List< Integer > listIdQuestion = pregunta2.Game.randomID(1, Question.count().intValue(), 10);
             for ( int i = 0; i < 10; i++ ) {
@@ -89,7 +95,6 @@ class App {
             }
             Game g   = Game.first("question_id > 0");
             Map  map = new HashMap();
-            map.put("userId", req.queryParams("userId"));
             map.put("count", 0);
             map.put("recordC", 0);
             map.put("game_id_actual", g.getId());
@@ -97,10 +102,9 @@ class App {
         }, new MustacheTemplateEngine());
 
         post("/challenge", ( req, res ) -> {
-            req.session().attribute("user_id");
-            Map map = new HashMap();
-            map.put("userId", req.queryParams("userId"));
-            Integer i = Integer.valueOf(req.queryParams("count")) + 1;
+            System.out.println("-----User id: " + req.session().attribute("user_id"));
+            Map     map = new HashMap();
+            Integer i   = Integer.valueOf(req.queryParams("count")) + 1;
             if ( i <= 10 ) {
                 Game     g = Game.findById(req.queryParams("game_id_actual"));
                 Question q = Question.findById(g.getQuestion_id());
@@ -115,7 +119,7 @@ class App {
                 map.put("recordC", req.queryParams("recordC"));
                 return new ModelAndView(map, "./views/challenge.mustache");
             } else {
-                User    u       = User.findById(req.queryParams("userId"));
+                User    u       = User.findById(req.session().attribute("user_id"));
                 Integer recordC = Integer.valueOf(req.queryParams("recordC"));
                 if ( u.getRecordChallenge() < recordC ) {
                     u.setRecordChallenge(recordC);
@@ -128,12 +132,11 @@ class App {
         }, new MustacheTemplateEngine());
 
         post("/responder", ( req, res ) -> {
-            req.session().attribute("user_id");
+            System.out.println("-----User id: " + req.session().attribute("user_id"));
             Game     g   = Game.findById(req.queryParams("game_id_actual"));
             Question q   = Question.findById(g.getQuestion_id());
             Integer  i   = Integer.valueOf(req.queryParams("game_id_actual"));
             Map      map = new HashMap();
-            map.put("userId", req.queryParams("userId"));
             map.put("count", req.queryParams("count"));
             map.put("respuestaCorrecta", q.getAnswer());
             map.put("game_id_actual", i + 1);
@@ -148,16 +151,8 @@ class App {
 
         }, new MustacheTemplateEngine());
 
-        //        post("/challengeFin", ( req, res ) -> {
-        //            req.session().attribute("user_id");
-        //            Map map = new HashMap();
-        //            map.put("userId", req.queryParams("userId"));
-        //            map.put("count", 0);
-        //            return new ModelAndView(map, "./views/challengeFin.mustache");
-        //        }, new MustacheTemplateEngine());
-
         post("/classicWelcome", ( req, res ) -> {
-            req.session().attribute("user_id");
+            System.out.println("-----User id: " + req.session().attribute("user_id"));
             Game.deleteAll();
             List< Integer > listIdQuestion = pregunta2.Game.randomID(1, Question.count().intValue(), Question.count().intValue());
             for ( int i = 0; i < Question.count().intValue(); i++ ) {
@@ -167,7 +162,6 @@ class App {
             }
             Game g   = Game.first("question_id > 0");
             Map  map = new HashMap();
-            map.put("userId", req.queryParams("userId"));
             map.put("count", 0);
             map.put("conditionNext", true);
             map.put("recordC", 0);
@@ -176,9 +170,8 @@ class App {
         }, new MustacheTemplateEngine());
 
         post("/classic", ( req, res ) -> {
-            req.session().attribute("user_id");
+            System.out.println("-----User id: " + req.session().attribute("user_id"));
             Map map = new HashMap();
-            map.put("userId", req.queryParams("userId"));
             map.put("conditionNext", req.queryParams("conditionNext"));
             Integer i = Integer.valueOf(req.queryParams("count")) + 1;
             if ( ( i <= Question.count().intValue() ) && ( Boolean.valueOf(req.queryParams("conditionNext")) ) ) {
@@ -198,7 +191,7 @@ class App {
                 map.put("recordC", req.queryParams("recordC"));
                 return new ModelAndView(map, "./views/classic.mustache");
             } else {
-                User    u       = User.findById(req.queryParams("userId"));
+                User    u       = User.findById(req.session().attribute("user_id"));
                 Integer recordC = Integer.valueOf(req.queryParams("recordC"));
                 if ( u.getRecordClassic() < recordC ) {
                     u.setRecordClassic(recordC);
@@ -211,12 +204,11 @@ class App {
         }, new MustacheTemplateEngine());
 
         post("/responderClassic", ( req, res ) -> {
-            req.session().attribute("user_id");
+            System.out.println("-----User id: " + req.session().attribute("user_id"));
             Game     g   = Game.findById(req.queryParams("game_id_actual"));
             Question q   = Question.findById(g.getQuestion_id());
             Integer  i   = Integer.valueOf(req.queryParams("game_id_actual"));
             Map      map = new HashMap();
-            map.put("userId", req.queryParams("userId"));
             map.put("count", req.queryParams("count"));
             map.put("respuestaCorrecta", q.getAnswer());
             map.put("game_id_actual", i + 1);
@@ -232,13 +224,5 @@ class App {
             }
         }, new MustacheTemplateEngine());
 
-        //        post("/classicFin", ( req, res ) -> {
-        //            req.session().attribute("user_id");
-        //            Map map = new HashMap();
-        //            map.put("userId", req.queryParams("userId"));
-        //            map.put("count", 0);
-        //            map.put("conditionNext", true);
-        //            return new ModelAndView(map, "./views/classicFin.mustache");
-        //        }, new MustacheTemplateEngine());
     }
 }
