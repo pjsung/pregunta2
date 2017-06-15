@@ -12,6 +12,12 @@ class Question
 
     static {
         validatePresenceOf("question").message("Please, provide question");
+        validatePresenceOf("option1").message("Please, provide option1");
+        validatePresenceOf("option2").message("Please, provide option2");
+        validatePresenceOf("option3").message("Please, provide option3");
+        validatePresenceOf("option4").message("Please, provide option4");
+        validatePresenceOf("answer").message("Please, provide answer");
+        validatePresenceOf("category_id").message("Please, provide category_id");
         validateWith(new UniquenessValidator("question")).message("This question is already exists.");
     }
 

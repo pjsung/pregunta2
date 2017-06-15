@@ -91,7 +91,7 @@ class App {
             for ( int i = 0; i < 10; i++ ) {
                 Game g = new Game();
                 g.set("question_id", listIdQuestion.get(i));
-                g.save();
+                g.saveIt();
             }
             Game g   = Game.first("question_id > 0");
             Map  map = new HashMap();
@@ -125,6 +125,7 @@ class App {
                     u.setRecordChallenge(recordC);
                     u.saveIt();
                 }
+                map.put("recordCFinal", req.queryParams("recordC"));
                 map.put("count", 0);
                 map.put("recordC", 0);
                 return new ModelAndView(map, "./views/challengeFin.mustache");
@@ -158,7 +159,7 @@ class App {
             for ( int i = 0; i < Question.count().intValue(); i++ ) {
                 Game g = new Game();
                 g.set("question_id", listIdQuestion.get(i));
-                g.save();
+                g.saveIt();
             }
             Game g   = Game.first("question_id > 0");
             Map  map = new HashMap();
@@ -197,6 +198,7 @@ class App {
                     u.setRecordClassic(recordC);
                     u.saveIt();
                 }
+                map.put("recordCFinal", req.queryParams("recordC"));
                 map.put("count", 0);
                 map.put("recordC", 0);
                 return new ModelAndView(map, "./views/classicFin.mustache");
