@@ -1,4 +1,4 @@
-CREATE TABLE pregunta2.users
+CREATE TABLE users
 (
   id              INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nick            VARCHAR(80),
@@ -9,5 +9,4 @@ CREATE TABLE pregunta2.users
 )
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8;
-CREATE UNIQUE INDEX users_id_uindex
-  ON pregunta2.users (id);
+

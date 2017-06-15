@@ -20,7 +20,7 @@ class UserTest {
     @Before
     public
     void before() {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pregunta2", "celia", "celia");
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pregunta2_test", "celia", "celia");
         System.out.println("UserTest setup");
         Base.openTransaction();
     }
