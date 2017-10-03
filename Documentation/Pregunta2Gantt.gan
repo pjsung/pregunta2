@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Pregunta2" company="" webLink="http://" view-date="2017-09-23" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="2.8.5" locale="es_AR">
+    <description/>
+    <view zooming-state="default:0" id="gantt-chart">
+        <field id="tpd3" name="Nombre" width="158" order="0"/>
+        <field id="tpd4" name="Fecha de inicio" width="62" order="1"/>
+        <field id="tpd5" name="Fecha de fin" width="61" order="2"/>
+        <timeline><![CDATA[53]]></timeline>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nombre" width="210" order="0"/>
+        <field id="1" name="Función" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="0" mon="0" tue="0" wed="0" thu="0" fri="0" sat="0"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="Definición de SRS, Creación del Backlog y Planificación" color="#8cb6ce" meeting="false" start="2017-09-12" duration="3" complete="0" expand="true">
+            <depend id="2" type="2" difference="0" hardness="Strong"/>
+            <depend id="10" type="2" difference="0" hardness="Strong"/>
+            <depend id="14" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="2" name="Database configuration" color="#8cb6ce" meeting="false" start="2017-09-15" duration="2" complete="0" expand="true"/>
+        <task id="10" name="Database implementation" color="#8cb6ce" meeting="false" start="2017-09-15" duration="2" complete="0" expand="true"/>
+        <task id="14" name="Database table script fix" color="#8cb6ce" meeting="false" start="2017-09-15" duration="2" complete="0" expand="true">
+            <depend id="16" type="2" difference="0" hardness="Strong"/>
+            <depend id="18" type="2" difference="0" hardness="Strong"/>
+            <depend id="24" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="16" name="Add new Class: Category, Game and Question" color="#8cb6ce" meeting="false" start="2017-09-17" duration="1" complete="0" expand="true">
+            <depend id="26" type="2" difference="0" hardness="Strong"/>
+            <depend id="28" type="2" difference="0" hardness="Strong"/>
+            <depend id="36" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="18" name="Add new Test Class: Category, Game and Question" color="#8cb6ce" meeting="false" start="2017-09-17" duration="1" complete="0" expand="true"/>
+        <task id="24" name="Complete Script, fix table Question" color="#8cb6ce" meeting="false" start="2017-09-17" duration="1" complete="0" expand="true"/>
+        <task id="26" name="Implementation: Class Category, Question and User" color="#8cb6ce" meeting="false" start="2017-09-18" duration="1" complete="0" expand="true"/>
+        <task id="28" name="Implementation: Class Game" color="#8cb6ce" meeting="false" start="2017-09-18" duration="1" complete="0" expand="true">
+            <depend id="38" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="31" name="Refactor code" color="#8cb6ce" meeting="false" start="2017-09-18" duration="1" complete="0" expand="true"/>
+        <task id="34" name="Delete examples" color="#8cb6ce" meeting="false" start="2017-09-18" duration="1" complete="0" expand="true"/>
+        <task id="36" name="Add Game Table. Implementation: Class Game and Login" color="#8cb6ce" meeting="false" start="2017-09-18" duration="2" complete="0" expand="true"/>
+        <task id="38" name="Fix" color="#8cb6ce" meeting="false" start="2017-09-19" duration="2" complete="0" expand="true">
+            <depend id="40" type="2" difference="0" hardness="Strong"/>
+            <depend id="42" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="40" name="Implementation: Challenge mode in App.java" color="#8cb6ce" meeting="false" start="2017-09-21" duration="2" complete="0" expand="true">
+            <depend id="44" type="2" difference="0" hardness="Strong"/>
+            <depend id="47" type="2" difference="0" hardness="Strong"/>
+            <depend id="49" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="42" name="Implementation: Classic mode in App.java" color="#8cb6ce" meeting="false" start="2017-09-21" duration="2" complete="0" expand="true">
+            <depend id="44" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="44" name="Fix Class: Category, Game, Question and User" color="#8cb6ce" meeting="false" start="2017-09-23" duration="2" complete="0" expand="true"/>
+        <task id="47" name="Fix method setter of Class: Category, Game, Question and User" color="#8cb6ce" meeting="false" start="2017-09-23" duration="2" complete="0" expand="true"/>
+        <task id="49" name="Implementation: User register" color="#8cb6ce" meeting="false" start="2017-09-23" duration="2" complete="0" expand="true">
+            <depend id="51" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="51" name="Fix classic game mode" color="#8cb6ce" meeting="false" start="2017-09-25" duration="1" complete="0" expand="true">
+            <depend id="53" type="2" difference="0" hardness="Strong"/>
+            <depend id="55" type="2" difference="0" hardness="Strong"/>
+            <depend id="57" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="53" name="Implementation: UserTest. Fix SRS, Class User an user_table" color="#8cb6ce" meeting="false" start="2017-09-26" duration="1" complete="0" expand="true"/>
+        <task id="55" name="Fix Class App and View" color="#8cb6ce" meeting="false" start="2017-09-26" duration="1" complete="0" expand="true">
+            <depend id="59" type="2" difference="0" hardness="Strong"/>
+            <depend id="61" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="57" name="Implementation: validations and Tests in class Category, Game, Question and User" color="#8cb6ce" meeting="false" start="2017-09-26" duration="2" complete="0" expand="true"/>
+        <task id="59" name="Fix all table and Test Class of Category, Game, Question and User" color="#8cb6ce" meeting="false" start="2017-09-27" duration="1" complete="0" expand="true"/>
+        <task id="61" name="Implementation: representation of record en all game mode. Fix validation of Class Question" color="#8cb6ce" meeting="false" start="2017-09-27" duration="3" complete="0" expand="true">
+            <depend id="63" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="63" name="SRS Correction" color="#8cb6ce" meeting="false" start="2017-09-30" duration="1" complete="0" expand="true"/>
+        <task id="124" name="Make Gantt Diagram and Petri Net for documentation" color="#8cb6ce" meeting="false" start="2017-10-02" duration="1" complete="0" expand="true"/>
+        <task id="67" name="Investigation: AJAX, Long Polling, Web Sockets." color="#8cb6ce" meeting="false" start="2017-09-12" duration="6" complete="0" expand="true"/>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
