@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net>
+        <token id="Default" red="0" green="0" blue="0"/>
+        <place id="J1 jugando">
+            <graphics>
+                <position x="150.0" y="223.0"/>
+            </graphics>
+            <name>
+                <value>P5</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value>Default,0</value>
+            </initialMarking>
+        </place>
+        <place id="Preguntas 2">
+            <graphics>
+                <position x="501.0" y="23.0"/>
+            </graphics>
+            <name>
+                <value>P2</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value>Default,10</value>
+            </initialMarking>
+        </place>
+        <place id="Preguntas 1">
+            <graphics>
+                <position x="149.0" y="30.0"/>
+            </graphics>
+            <name>
+                <value>P1</value>
+                <graphics>
+                    <offset x="-6.0" y="17.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value>Default,10</value>
+            </initialMarking>
+        </place>
+        <place id="J2 Libre">
+            <graphics>
+                <position x="371.0" y="81.0"/>
+            </graphics>
+            <name>
+                <value>P3</value>
+                <graphics>
+                    <offset x="34.0" y="-5.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value></value>
+            </initialMarking>
+        </place>
+        <place id="J1 Libre">
+            <graphics>
+                <position x="239.0" y="80.0"/>
+            </graphics>
+            <name>
+                <value>P0</value>
+                <graphics>
+                    <offset x="36.0" y="-8.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value>Default,1</value>
+            </initialMarking>
+        </place>
+        <place id="J2 jugando">
+            <graphics>
+                <position x="484.0" y="222.0"/>
+            </graphics>
+            <name>
+                <value>P6</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value></value>
+            </initialMarking>
+        </place>
+        <transition id="J1 responder bien">
+            <graphics>
+                <position x="76.0" y="151.0"/>
+            </graphics>
+            <name>
+                <value>T1</value>
+                <graphics>
+                    <offset x="24.0" y="35.0"/>
+                </graphics>
+            </name>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <timed>
+                <value>false</value>
+            </timed>
+            <priority>
+                <value>1</value>
+            </priority>
+            <orientation>
+                <value>90</value>
+            </orientation>
+            <rate>
+                <value>1</value>
+            </rate>
+        </transition>
+        <transition id="J2 jugar">
+            <graphics>
+                <position x="461.0" y="157.0"/>
+            </graphics>
+            <name>
+                <value>T1</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <timed>
+                <value>false</value>
+            </timed>
+            <priority>
+                <value>1</value>
+            </priority>
+            <orientation>
+                <value>90</value>
+            </orientation>
+            <rate>
+                <value>1</value>
+            </rate>
+        </transition>
+        <transition id="J2 responder mal">
+            <graphics>
+                <position x="357.0" y="205.0"/>
+            </graphics>
+            <name>
+                <value>T0</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <timed>
+                <value>false</value>
+            </timed>
+            <priority>
+                <value>1</value>
+            </priority>
+            <orientation>
+                <value>0</value>
+            </orientation>
+            <rate>
+                <value>1</value>
+            </rate>
+        </transition>
+        <transition id="J1 Jugar">
+            <graphics>
+                <position x="159.0" y="149.0"/>
+            </graphics>
+            <name>
+                <value>T0</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <timed>
+                <value>false</value>
+            </timed>
+            <priority>
+                <value>1</value>
+            </priority>
+            <orientation>
+                <value>90</value>
+            </orientation>
+            <rate>
+                <value>1</value>
+            </rate>
+        </transition>
+        <transition id="J1 Responder mal">
+            <graphics>
+                <position x="300.0" y="162.0"/>
+            </graphics>
+            <name>
+                <value>T1</value>
+                <graphics>
+                    <offset x="-3.0" y="9.0"/>
+                </graphics>
+            </name>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <timed>
+                <value>false</value>
+            </timed>
+            <priority>
+                <value>1</value>
+            </priority>
+            <orientation>
+                <value>0</value>
+            </orientation>
+            <rate>
+                <value>1</value>
+            </rate>
+        </transition>
+        <transition id="J2 responder bien">
+            <graphics>
+                <position x="570.0" y="157.0"/>
+            </graphics>
+            <name>
+                <value>T0</value>
+                <graphics>
+                    <offset x="122.0" y="21.0"/>
+                </graphics>
+            </name>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <timed>
+                <value>false</value>
+            </timed>
+            <priority>
+                <value>1</value>
+            </priority>
+            <orientation>
+                <value>90</value>
+            </orientation>
+            <rate>
+                <value>1</value>
+            </rate>
+        </transition>
+        <arc id="J2 responder mal TO J1 Libre" source="J2 responder mal" target="J1 Libre">
+            <arcpath id="" x="362.0" y="205.0" curvePoint="false"/>
+            <arcpath id="" x="264.0" y="106.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="J2 jugar TO J2 jugando" source="J2 jugar" target="J2 jugando">
+            <arcpath id="" x="466.0" y="177.0" curvePoint="false"/>
+            <arcpath id="" x="492.0" y="224.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="Responder bien TO Jugador 1 jugando" source="J1 responder bien" target="J1 jugando">
+            <arcpath id="" x="96.0" y="166.0" curvePoint="false"/>
+            <arcpath id="" x="92.0" y="176.0" curvePoint="false"/>
+            <arcpath id="" x="148.0" y="230.0" curvePoint="false"/>
+            <arcpath id="" x="147.0" y="230.0" curvePoint="false"/>
+            <arcpath id="" x="148.0" y="230.0" curvePoint="false"/>
+            <arcpath id="" x="148.0" y="233.0" curvePoint="false"/>
+            <arcpath id="" x="151.0" y="234.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="J1 Responder mal TO Jugador 2 Libre" source="J1 Responder mal" target="J2 Libre">
+            <arcpath id="" x="310.0" y="177.0" curvePoint="false"/>
+            <arcpath id="" x="375.0" y="107.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="J2 responder bien TO J2 jugando" source="J2 responder bien" target="J2 jugando">
+            <arcpath id="" x="575.0" y="177.0" curvePoint="false"/>
+            <arcpath id="" x="576.0" y="235.0" curvePoint="false"/>
+            <arcpath id="" x="576.0" y="235.0" curvePoint="false"/>
+            <arcpath id="" x="576.0" y="235.0" curvePoint="false"/>
+            <arcpath id="" x="573.0" y="236.0" curvePoint="false"/>
+            <arcpath id="" x="514.0" y="237.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="J1 responder bien TO J1 jugando" source="J1 responder bien" target="J1 jugando">
+            <arcpath id="" x="81.0" y="171.0" curvePoint="false"/>
+            <arcpath id="" x="79.0" y="230.0" curvePoint="false"/>
+            <arcpath id="" x="80.0" y="230.0" curvePoint="false"/>
+            <arcpath id="" x="82.0" y="230.0" curvePoint="false"/>
+            <arcpath id="" x="150.0" y="237.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="T0 TO P5" source="J1 Jugar" target="J1 jugando">
+            <arcpath id="" x="164.0" y="169.0" curvePoint="false"/>
+            <arcpath id="" x="165.0" y="223.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="Preguntas 1 TO Responder bien" source="Preguntas 1" target="J1 responder bien">
+            <arcpath id="" x="156.0" y="57.0" curvePoint="false"/>
+            <arcpath id="" x="81.0" y="161.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="Jugador 1 jugando TO Responder bien" source="J1 jugando" target="J1 responder bien">
+            <arcpath id="" x="150.0" y="238.0" curvePoint="false"/>
+            <arcpath id="" x="36.0" y="238.0" curvePoint="false"/>
+            <arcpath id="" x="37.0" y="237.0" curvePoint="false"/>
+            <arcpath id="" x="37.0" y="236.0" curvePoint="false"/>
+            <arcpath id="" x="37.0" y="235.0" curvePoint="false"/>
+            <arcpath id="" x="37.0" y="149.0" curvePoint="false"/>
+            <arcpath id="" x="37.0" y="149.0" curvePoint="false"/>
+            <arcpath id="" x="38.0" y="149.0" curvePoint="false"/>
+            <arcpath id="" x="39.0" y="149.0" curvePoint="false"/>
+            <arcpath id="" x="40.0" y="149.0" curvePoint="false"/>
+            <arcpath id="" x="82.0" y="149.0" curvePoint="false"/>
+            <arcpath id="" x="82.0" y="149.0" curvePoint="false"/>
+            <arcpath id="" x="81.0" y="161.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="Jugador 1 jugando TO J1 Responder mal" source="J1 jugando" target="J1 Responder mal">
+            <arcpath id="" x="179.0" y="232.0" curvePoint="false"/>
+            <arcpath id="" x="300.0" y="177.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="Jugador 2 Libre TO J2 jugar" source="J2 Libre" target="J2 jugar">
+            <arcpath id="" x="397.0" y="106.0" curvePoint="false"/>
+            <arcpath id="" x="451.0" y="172.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="J2 jugando TO J2 responder bien" source="J2 jugando" target="J2 responder bien">
+            <arcpath id="" x="507.0" y="224.0" curvePoint="false"/>
+            <arcpath id="" x="510.0" y="220.0" curvePoint="false"/>
+            <arcpath id="" x="560.0" y="172.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="J1 jugando TO J1 responder bien" source="J1 jugando" target="J1 responder bien">
+            <arcpath id="" x="154.0" y="228.0" curvePoint="false"/>
+            <arcpath id="" x="96.0" y="166.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="Preguntas 2 TO J2 jugar" source="Preguntas 2" target="J2 jugar">
+            <arcpath id="" x="511.0" y="52.0" curvePoint="false"/>
+            <arcpath id="" x="466.0" y="167.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="Preguntas 2 TO J2 responder bien" source="Preguntas 2" target="J2 responder bien">
+            <arcpath id="" x="522.0" y="52.0" curvePoint="false"/>
+            <arcpath id="" x="575.0" y="167.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="P0 TO T0" source="J1 Libre" target="T0">
+            <arcpath id="" x="244.0" y="106.0" curvePoint="false"/>
+            <arcpath id="" x="215.0" y="137.0" curvePoint="false"/>
+            <arcpath id="" x="214.0" y="133.0" curvePoint="false"/>
+            <arcpath id="" x="214.0" y="133.0" curvePoint="false"/>
+            <arcpath id="" x="214.0" y="130.0" curvePoint="false"/>
+            <arcpath id="" x="268.0" y="147.0" curvePoint="false"/>
+            <arcpath id="" x="268.0" y="146.0" curvePoint="false"/>
+            <arcpath id="" x="268.0" y="146.0" curvePoint="false"/>
+            <arcpath id="" x="268.0" y="145.0" curvePoint="false"/>
+            <arcpath id="" x="256.0" y="140.0" curvePoint="false"/>
+            <arcpath id="" x="272.0" y="159.0" curvePoint="false"/>
+            <arcpath id="" x="272.0" y="157.0" curvePoint="false"/>
+            <arcpath id="" x="272.0" y="157.0" curvePoint="false"/>
+            <arcpath id="" x="243.0" y="169.0" curvePoint="false"/>
+            <arcpath id="" x="243.0" y="170.0" curvePoint="false"/>
+            <arcpath id="" x="240.0" y="169.0" curvePoint="false"/>
+            <arcpath id="" x="246.0" y="179.0" curvePoint="false"/>
+            <arcpath id="" x="382.0" y="216.0" curvePoint="false"/>
+            <arcpath id="" x="382.0" y="217.0" curvePoint="false"/>
+            <arcpath id="" x="384.0" y="218.0" curvePoint="false"/>
+            <arcpath id="" x="266.0" y="223.0" curvePoint="false"/>
+            <arcpath id="" x="222.0" y="151.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="J2 jugando TO J2 responder mal" source="J2 jugando" target="J2 responder mal">
+            <arcpath id="" x="484.0" y="235.0" curvePoint="false"/>
+            <arcpath id="" x="367.0" y="220.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="Preguntas 1 TO T0" source="Preguntas 1" target="J1 Jugar">
+            <arcpath id="" x="164.0" y="60.0" curvePoint="false"/>
+            <arcpath id="" x="164.0" y="65.0" curvePoint="false"/>
+            <arcpath id="" x="164.0" y="159.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="Jugador 1 TO T0" source="J1 Libre" target="J1 Jugar">
+            <arcpath id="" x="241.0" y="102.0" curvePoint="false"/>
+            <arcpath id="" x="238.0" y="104.0" curvePoint="false"/>
+            <arcpath id="" x="237.0" y="104.0" curvePoint="false"/>
+            <arcpath id="" x="179.0" y="164.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="Jugador 1 jugando TO J1 responder bien" source="J1 jugando" target="J1 responder bien">
+            <arcpath id="" x="150.0" y="238.0" curvePoint="false"/>
+            <arcpath id="" x="36.0" y="238.0" curvePoint="false"/>
+            <arcpath id="" x="36.0" y="238.0" curvePoint="false"/>
+            <arcpath id="" x="36.0" y="238.0" curvePoint="false"/>
+            <arcpath id="" x="36.0" y="237.0" curvePoint="false"/>
+            <arcpath id="" x="36.0" y="236.0" curvePoint="false"/>
+            <arcpath id="" x="36.0" y="236.0" curvePoint="false"/>
+            <arcpath id="" x="36.0" y="235.0" curvePoint="false"/>
+            <arcpath id="" x="37.0" y="137.0" curvePoint="false"/>
+            <arcpath id="" x="37.0" y="137.0" curvePoint="false"/>
+            <arcpath id="" x="37.0" y="137.0" curvePoint="false"/>
+            <arcpath id="" x="38.0" y="137.0" curvePoint="false"/>
+            <arcpath id="" x="70.0" y="137.0" curvePoint="false"/>
+            <arcpath id="" x="70.0" y="137.0" curvePoint="false"/>
+            <arcpath id="" x="70.0" y="138.0" curvePoint="false"/>
+            <arcpath id="" x="70.0" y="139.0" curvePoint="false"/>
+            <arcpath id="" x="81.0" y="161.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+    </net>
+</pnml>
