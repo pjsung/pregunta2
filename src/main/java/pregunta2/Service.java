@@ -137,14 +137,18 @@ public class Service {
 
     public static ModelAndView classicWelcome(Request req, Response res) {
         System.out.println("-----User id: " + req.session().attribute("user_id"));
-        Game.deleteAll();
+        //Game.deleteAll();
         List<Integer> listIdQuestion = Game.randomID(1, Question.count().intValue(), Question.count().intValue());
         for (int i = 0; i < Question.count().intValue(); i++) {
             Game g = new Game();
             g.set("question_id", listIdQuestion.get(i));
+            g.set("user_id", req.session().attribute("user_id"));
+            g.set("game_mode", 1);
             g.saveIt();
         }
-        Game g = Game.first("question_id > 0");
+        Object userId = req.session().attribute("user_id");
+        List<Game> game = Game.where("question_id > 0 and game_mode = 1 and user_id = ?", userId);
+        Game g = game.get(0);
         Map map = new HashMap();
         map.put("count", 0);
         map.put("conditionNext", true);
@@ -205,6 +209,12 @@ public class Service {
         } else {
             map.put("conditionNext", false);
             map.put("recordC", req.queryParams("recordC"));
+            Object userId = req.session().attribute("user_id");
+            List<Game> game = Game.where("question_id > 0 and game_mode = 1 and user_id = ?", userId);
+            for (int j = 0; j < 60; j++) {
+                Game game1 = game.get(j);
+                game1.delete();
+            }
             return new ModelAndView(map, "./views/responderMalClassic.mustache");
         }
     }
