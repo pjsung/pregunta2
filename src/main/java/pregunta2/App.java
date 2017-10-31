@@ -42,6 +42,8 @@ public class App {
 
         post("/responderClassic", Service::answerClassic, new MustacheTemplateEngine());
 
+        post("/1Vs1Welcome", Service::OneVsOneWelcome, new MustacheTemplateEngine());
+
     }
 
 }
