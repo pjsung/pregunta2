@@ -226,4 +226,11 @@ public class Service {
             return new ModelAndView(map, "./views/responderMalClassic.mustache");
         }
     }
+
+    public static ModelAndView OneVsOneWelcome(Request req, Response res) {
+        System.out.println("-----User id: " + req.session().attribute("user_id"));
+        Map map = new HashMap();
+        return new ModelAndView(map, "./views/1Vs1Welcome.mustache");
+    }
+
 }
