@@ -237,9 +237,9 @@ public class Service {
     public static ModelAndView crearUnoVsUno(Request req, Response res) {
         System.out.println("-----User id: " + req.session().attribute("user_id"));
         List<Integer> listIdQuestion = Game.randomID(1, Question.count().intValue(), 10);
-        for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
             Game g = new Game();
-            g.set("question_id", listIdQuestion.get(i));
+            g.set("question_id", listIdQuestion.get(j));
             g.set("user_id", req.session().attribute("user_id"));
             g.set("game_mode", 3);
             g.saveIt();
@@ -253,6 +253,5 @@ public class Service {
         map.put("game_id_actual", g.getId());
         return new ModelAndView(map, "./views/1Vs1Welcome.mustache");
     }
-
 
 }

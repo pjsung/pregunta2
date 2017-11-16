@@ -193,3 +193,5 @@ INSERT INTO pregunta2.users (nick, pass, recordClassic, recordChallenge, record1
 VALUES ('franco', 'franco', 0, 0, 0, 'common');
 INSERT INTO pregunta2.users (nick, pass, recordClassic, recordChallenge, record1Vs1, userType)
 VALUES ('marcelo', 'marcelo', 0, 0, 0, 'common');
+INSERT INTO pregunta2.users (nick, pass, recordClassic, recordChallenge, record1Vs1, userType)
+VALUES ('lucia', 'lucia', 0, 0, 0, 'common');
