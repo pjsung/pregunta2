@@ -26,6 +26,7 @@ public class Service {
         u.set("pass", req.queryParams("password"));
         u.set("recordClassic", 0);
         u.set("recordChallenge", 0);
+        u.set("record1Vs1", 0);
         u.set("userType", "common");
         u.saveIt();
         Map map = new HashMap();
@@ -227,10 +228,31 @@ public class Service {
         }
     }
 
-    public static ModelAndView OneVsOneWelcome(Request req, Response res) {
+    public static ModelAndView oneVsOneWelcome(Request req, Response res) {
         System.out.println("-----User id: " + req.session().attribute("user_id"));
         Map map = new HashMap();
         return new ModelAndView(map, "./views/1Vs1Welcome.mustache");
     }
+
+    public static ModelAndView crearUnoVsUno(Request req, Response res) {
+        System.out.println("-----User id: " + req.session().attribute("user_id"));
+        List<Integer> listIdQuestion = Game.randomID(1, Question.count().intValue(), 10);
+        for (int i = 0; i < 10; i++) {
+            Game g = new Game();
+            g.set("question_id", listIdQuestion.get(i));
+            g.set("user_id", req.session().attribute("user_id"));
+            g.set("game_mode", 3);
+            g.saveIt();
+        }
+        Object userId = req.session().attribute("user_id");
+        List<Game> game = Game.where("question_id > 0 and game_mode = 3 and user_id = ?", userId);
+        Game g = game.get(0);
+        Map map = new HashMap();
+        map.put("count", 0);
+        map.put("record1Vs1", 0);
+        map.put("game_id_actual", g.getId());
+        return new ModelAndView(map, "./views/1Vs1Welcome.mustache");
+    }
+
 
 }

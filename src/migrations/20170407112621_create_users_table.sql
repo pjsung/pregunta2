@@ -5,6 +5,7 @@ CREATE TABLE users
   pass            VARCHAR(80),
   recordClassic   INT                      DEFAULT 0,
   recordChallenge INT                      DEFAULT 0,
+  record1Vs1      INT                      DEFAULT 0,
   userType        VARCHAR(10)
 )
   ENGINE = InnoDB

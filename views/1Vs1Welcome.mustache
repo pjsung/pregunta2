@@ -1,3 +1,28 @@
-<input type="button" value="Crear Juego">
+<h1>1 Vs 1</h1>
+
+<form action="/nuevoJuego1vs1" method="post">
+    <input type="hidden" name="count" value="{{count}}">
+    <input type="hidden" name="game_id_actual" value="{{game_id_actual}}">
+    <input type="hidden" name="record1Vs1" value="{{record1Vs1}}">
+    <input type="submit" value="Crear">
+</form>
 
 <input type="button" value="Unirse">
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebsSockets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="chatControls">
+    <input id="message" placeholder="Type your message">
+    <button id="send">Send</button>
+</div>
+<ul id="userlist"> <!-- Built by JS --> </ul>
+<div id="chat">    <!-- Built by JS --> </div>
+<script src="websocketDemo.js"></script>
+</body>
+</html>
