@@ -23,9 +23,9 @@ public class App {
 
     public static void main(String[] args) {
 
-//        staticFiles.location("/public"); //index.html is served at localhost:4567 (default port)
-//        webSocket("/1Vs1Welcome2", GameWebSocketHandler.class);
-//        init();
+        staticFiles.location("/public"); //index.html is served at localhost:4567 (default port)
+        webSocket("/1Vs1Welcome2", GameWebSocketHandler.class);
+        init();
 
         before((req, res) -> Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pregunta2", "celia", "celia"));
 
