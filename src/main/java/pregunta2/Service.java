@@ -251,7 +251,7 @@ public class Service {
         map.put("count", 0);
         map.put("record1Vs1", 0);
         map.put("game_id_actual", g.getId());
-        return new ModelAndView(map, "./views/1Vs1Welcome.mustache");
+        return new ModelAndView(map, "./views/game1Vs1.mustache");
     }
 
 }
