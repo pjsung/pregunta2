@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WebsSockets</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div id="chatControls">
-    <input id="message" placeholder="Type your response (1, 2, 3 o 4)">
-    <button id="send">Send</button>
-</div>
-<ul id="userlist"> <!-- Built by JS --> </ul>
-<div id="chat">    <!-- Built by JS --> </div>
-<script src="websocket.js"></script>
-</body>
-</html>
+<h1>Pregunta2: 1 Vs 1.</h1>
+
+<p>Pregunta {{count}}: {{pregunta}}</p>
+
+<ul>
+    <li>Opcion 1: {{opcion1}}</li>
+    <li>Opcion 2: {{opcion2}}</li>
+    <li>Opcion 3: {{opcion3}}</li>
+    <li>Opcion 4: {{opcion4}}</li>
+</ul>
+
+<form action="/answer1Vs1" method="post">
+    <input type="hidden" name="gameTable_id" value="{{gameTable_id}}">
+    <input type="hidden" name="count" value="{{count}}">
+    <input type="hidden" name="game_id_actual" value="{{game_id_actual}}">
+    <input type="hidden" name="record1Vs1" value="{{record1Vs1}}">
+    <input type="hidden" name="preguntaId" value="{{preguntaId}}">
+
+    <input type="text" name="respuesta">
+    <input type="submit" value="Responder">
+</form>

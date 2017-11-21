@@ -1,10 +1,29 @@
 <h1>1 Vs 1</h1>
 
-<form action="/nuevoJuego1vs1" method="post">
+<form action="/newGame1vs1" method="post">
     <input type="hidden" name="count" value="{{count}}">
     <input type="hidden" name="game_id_actual" value="{{game_id_actual}}">
     <input type="hidden" name="record1Vs1" value="{{record1Vs1}}">
     <input type="submit" value="Crear">
 </form>
 
-<input type="button" value="Unirse">
+<form action="/deleteMyGame" method="post">
+    <input type="hidden" name="count" value="{{count}}">
+    <input type="hidden" name="game_id_actual" value="{{game_id_actual}}">
+    <input type="hidden" name="record1Vs1" value="{{record1Vs1}}">
+    <input type="submit" value="Borrar mi juego creado">
+</form>
+
+<h1>Partidas creadas:</h1>
+{{#games}}
+    <div>
+        <form action="/joinGame1Vs1" method="post">
+            <input type="hidden" name="count" value="{{count}}">
+            <input type="hidden" name="game_id" value="{{game_id}}">
+            <input type="hidden" name="user1_nick" value="{{user1_nick}}">
+            <input type="submit" value="Desafiar a {{user1_nick}}">
+            <br>Game id : {{game_id}}</br>
+            <br>User1 nick : {{user1_nick}}</br>
+        </form>
+    </div>
+{{/games}}
