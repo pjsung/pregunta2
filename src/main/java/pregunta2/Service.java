@@ -4,6 +4,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -230,28 +231,70 @@ public class Service {
 
     public static ModelAndView oneVsOneWelcome(Request req, Response res) {
         System.out.println("-----User id: " + req.session().attribute("user_id"));
+        List<GameTable> lGameTable = GameTable.findAll();
+        List<Map> games = new ArrayList<>();
+        for (int i = 0; i < GameTable.count(); i++) {
+            GameTable gTable = lGameTable.get(i);
+            User u = User.findById(gTable.get("user1_id"));
+            Map map2 = new HashMap();
+            map2.put("game_id", gTable.getId());
+            map2.put("user1_nick", u.get("nick"));
+            games.add(i, map2);
+        }
         Map map = new HashMap();
+        map.put("games", games);
+        map.put("count", 0);
+//        System.out.println(map);
         return new ModelAndView(map, "./views/1Vs1Welcome.mustache");
     }
 
-    public static ModelAndView crearUnoVsUno(Request req, Response res) {
-        System.out.println("-----User id: " + req.session().attribute("user_id"));
-        List<Integer> listIdQuestion = Game.randomID(1, Question.count().intValue(), 10);
-        for (int j = 0; j < 10; j++) {
-            Game g = new Game();
-            g.set("question_id", listIdQuestion.get(j));
-            g.set("user_id", req.session().attribute("user_id"));
-            g.set("game_mode", 3);
-            g.saveIt();
-        }
-        Object userId = req.session().attribute("user_id");
-        List<Game> game = Game.where("question_id > 0 and game_mode = 3 and user_id = ?", userId);
-        Game g = game.get(0);
+    public static ModelAndView createOneVsOne(Request req, Response res) {
+        Object user1Id = req.session().attribute("user_id");
+        List<GameTable> lGameTable = GameTable.where("user1_id = ?", user1Id);
+        Boolean noExiste = lGameTable.isEmpty();
+        System.out.println("-----------------------------------");
+        System.out.println(noExiste);
         Map map = new HashMap();
         map.put("count", 0);
-        map.put("record1Vs1", 0);
-        map.put("game_id_actual", g.getId());
-        return new ModelAndView(map, "./views/game1Vs1.mustache");
+        if (!noExiste) {
+            System.out.println("Entro por if");
+            if (lGameTable.get(0).get("user2_id") == null) {
+                return new ModelAndView(map, "./views/waitOpponent.mustache");
+            } else {
+                Object userId = req.session().attribute("user_id");
+                List<GameTable> l2GameTable = GameTable.where("user1_id = ?", userId);
+                GameTable gTable = l2GameTable.get(0);
+                map.put("gameTable_id", gTable.getId());
+                List<Game> game = Game.where("question_id > 0 and game_mode = 3 and user_id = ?", userId);
+                Game g = game.get(0);
+                map.put("record1Vs1", 0);
+                map.put("game_id_actual", g.getId());
+                return new ModelAndView(map, "./views/game1Vs1Welcome.mustache");
+            }
+
+        } else {
+            System.out.println("Entro por else");
+            GameTable gTable = new GameTable();
+            gTable.set("user1_id", req.session().attribute("user_id"));
+            gTable.saveIt();
+            List<Integer> listIdQuestion = Game.randomID(1, Question.count().intValue(), 10);
+            for (int j = 0; j < 10; j++) {
+                Game g = new Game();
+                g.set("question_id", listIdQuestion.get(j));
+                g.set("user_id", req.session().attribute("user_id"));
+                g.set("game_mode", 3);
+                g.saveIt();
+            }
+            Object userId = req.session().attribute("user_id");
+            List<Game> game = Game.where("question_id > 0 and game_mode = 3 and user_id = ?", userId);
+            Game g = game.get(0);
+            map.put("gameTable_id", gTable.getId());
+            map.put("count", 0);
+            map.put("record1Vs1", 0);
+            map.put("game_id_actual", g.getId());
+            return new ModelAndView(map, "./views/waitOpponent.mustache");
+        }
+
     }
 
 }
