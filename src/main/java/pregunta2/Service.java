@@ -230,9 +230,9 @@ public class Service {
     }
 
     //Método que muestra la vista de partidas existentes en forma dinámica (Si hay juego creado, se muestra,
-    //sino, no lo muestra)
+    //sino, no lo muestra). Se usó Websocket para refrescar la página si alguien crea el juego o borra el juego.
     public static ModelAndView oneVsOneWelcome(Request req, Response res) {
-        System.out.println("-----User id: " + req.session().attribute("user_id"));
+//        System.out.println("-----User id: " + req.session().attribute("user_id"));
         List<GameTable> lGameTable = GameTable.findAll();
         List<Map> games = new ArrayList<>();
         for (int i = 0; i < GameTable.count(); i++) {
