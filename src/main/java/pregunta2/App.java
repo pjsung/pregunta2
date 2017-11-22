@@ -71,10 +71,9 @@ public class App {
     public static void broadcastMessage(String sender, String message) {
         userUsernameMap.keySet().stream().filter(Session::isOpen).forEach(session -> {
             try {
+                System.out.print("pase por broadcastMessage");
                 session.getRemote().sendString(String.valueOf(new JSONObject()
-                        //.put("userMessage", createHtmlMessageFromSender(sender, message)) //Implementar cuando se necesite
                         .put("userlist", userUsernameMap.values())
-                        .put("sender", sender)
                 ));
             } catch (Exception e) {
                 e.printStackTrace();
