@@ -229,6 +229,8 @@ public class Service {
         }
     }
 
+    //Método que muestra la vista de partidas existentes en forma dinámica (Si hay juego creado, se muestra,
+    //sino, no lo muestra)
     public static ModelAndView oneVsOneWelcome(Request req, Response res) {
         System.out.println("-----User id: " + req.session().attribute("user_id"));
         List<GameTable> lGameTable = GameTable.findAll();
@@ -244,20 +246,18 @@ public class Service {
         Map map = new HashMap();
         map.put("games", games);
         map.put("count", 0);
-//        System.out.println(map);
         return new ModelAndView(map, "./views/1Vs1Welcome.mustache");
     }
 
+    //Método que crea el juego 1 Vs 1, en el caso de que 1 ya tiene el juego creado, le retorna la vista esperando
+    //al contrincante, sino crea el juego. Si hay alguien que se une el juego, retorna la vista para empezar a jugar.
     public static ModelAndView createOneVsOne(Request req, Response res) {
         Object user1Id = req.session().attribute("user_id");
         List<GameTable> lGameTable = GameTable.where("user1_id = ?", user1Id);
         Boolean noExiste = lGameTable.isEmpty();
-        System.out.println("-----------------------------------");
-        System.out.println(noExiste);
         Map map = new HashMap();
         map.put("count", 0);
         if (!noExiste) {
-            System.out.println("Entro por if");
             if (lGameTable.get(0).get("user2_id") == null) {
                 return new ModelAndView(map, "./views/waitOpponent.mustache");
             } else {
@@ -273,7 +273,6 @@ public class Service {
             }
 
         } else {
-            System.out.println("Entro por else");
             GameTable gTable = new GameTable();
             gTable.set("user1_id", req.session().attribute("user_id"));
             gTable.saveIt();
@@ -297,6 +296,7 @@ public class Service {
 
     }
 
+    //Método que une el jugador 2 al juego de jugador uno.
     public static ModelAndView joinGame1Vs1(Request req, Response res) {
         Object game_id = req.queryParams("game_id");
         Object user1_nick = req.queryParams("user1_nick");
@@ -314,6 +314,8 @@ public class Service {
         return new ModelAndView(map, "./views/game1Vs1WelcomeUser2.mustache");
     }
 
+    //Método que muestra las preguntas al jugador, y recibe respuesta. En caso de que termina de preguntar,
+    //retorna la vista correspondiente al jugador 1 o jugador 2, si gana, pierde o empata.
     public static ModelAndView game1Vs1(Request req, Response res) {
         Map map = new HashMap();
         map.put("gameTable_id", req.queryParams("gameTable_id"));
@@ -383,6 +385,7 @@ public class Service {
         }
     }
 
+    //Método que revisa si la respuesta es correcta o no, lo guarda y retorna la vista correspondiente
     public static ModelAndView answer1Vs1(Request req, Response res) {
         Game g = Game.findById(req.queryParams("game_id_actual"));
         Question q = Question.findById(g.getQuestion_id());
@@ -402,6 +405,7 @@ public class Service {
         }
     }
 
+    //Método que elimina el juego 1 vs 1 creado por si mismo
     public static ModelAndView deleteMyGame(Request req, Response res) {
         Object userId = req.session().attribute("user_id");
         GameTable.delete("user1_id = ?", userId);
