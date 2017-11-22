@@ -8,14 +8,11 @@ import spark.Request;
 import spark.Response;
 import spark.template.mustache.MustacheTemplateEngine;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static j2html.TagCreator.*;
 import static spark.Spark.*;
 
 /**
@@ -64,7 +61,7 @@ public class App {
 
         post("/1Vs1Welcome", Service::oneVsOneWelcome, new MustacheTemplateEngine());
 
-        post("/nuevoJuego1vs1", Service::createOneVsOne, new MustacheTemplateEngine());
+        post("/newGame1vs1", Service::createOneVsOne, new MustacheTemplateEngine());
 
         post("/joinGame1Vs1", (Request req, Response res) -> {
             Object game_id = req.queryParams("game_id");
@@ -80,7 +77,7 @@ public class App {
             map.put("record1Vs1", 0);
             map.put("game_id_actual", g.getId());
             map.put("count", req.queryParams("count"));
-            return new ModelAndView(map, "./views/game1Vs1Welcome.mustache");
+            return new ModelAndView(map, "./views/game1Vs1WelcomeUser2.mustache");
         }, new MustacheTemplateEngine());
 
         post("/game1Vs1", (Request req, Response res) -> {
@@ -189,22 +186,14 @@ public class App {
         userUsernameMap.keySet().stream().filter(Session::isOpen).forEach(session -> {
             try {
                 session.getRemote().sendString(String.valueOf(new JSONObject()
-                        .put("userMessage", createHtmlMessageFromSender(sender, message))
+                        //.put("userMessage", createHtmlMessageFromSender(sender, message)) //Implementar cuando se necesite
                         .put("userlist", userUsernameMap.values())
+                        .put("sender", sender)
                 ));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
-    }
-
-    //Builds a HTML element with a sender-name, a message, and a timestamp,
-    private static String createHtmlMessageFromSender(String sender, String message) {
-        return article(
-                b(sender + " says:"),
-                span(attrs(".timestamp"), new SimpleDateFormat("HH:mm:ss").format(new Date())),
-                p(message)
-        ).render();
     }
 
 }

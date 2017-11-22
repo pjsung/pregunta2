@@ -14,18 +14,15 @@ public class GameWebSocketHandler {
     public void onConnect(Session user) throws Exception {
         String username = "User" + App.nextUserNumber++;
         App.userUsernameMap.put(user, username);
-        App.broadcastMessage(sender = "Server", msg = (username + " joined the chat"));
+        App.broadcastMessage(sender = username, msg = ("Nothing"));
     }
 
     @OnWebSocketClose
     public void onClose(Session user, int statusCode, String reason) {
-        String username = App.userUsernameMap.get(user);
         App.userUsernameMap.remove(user);
-        App.broadcastMessage(sender = "Server", msg = (username + " left the chat"));
     }
 
     @OnWebSocketMessage
     public void onMessage(Session user, String message) {
-        App.broadcastMessage(sender = App.userUsernameMap.get(user), msg = message);
     }
 }
